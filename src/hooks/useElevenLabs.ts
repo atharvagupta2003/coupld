@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 
-const XI_KEY = import.meta.env.VITE_ELEVENLABS_KEY as string | undefined ?? 'sk_e3bbcb243c709ca90ac4edc31d8c99ab0a6fb520978881b9'
+const XI_KEY = import.meta.env.VITE_ELEVENLABS_KEY || 'sk_e3bbcb243c709ca90ac4edc31d8c99ab0a6fb520978881b9'
 
 export const COACH_VOICES = {
   adam: 'pNInz6obpgDQGcFmaJgB',
