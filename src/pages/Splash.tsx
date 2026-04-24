@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
+import GamificationBadge from '../components/GamificationBadge'
 
 function GoogleIcon() {
   return (
@@ -33,10 +34,14 @@ function XIcon() {
 export default function Splash() {
   const navigate = useNavigate()
   const [socialLoading, setSocialLoading] = useState<string | null>(null)
+  const [showBadge, setShowBadge] = useState(false)
 
   const handleSocial = (id: string) => {
     setSocialLoading(id)
-    setTimeout(() => navigate('/signup/onboarding'), 900)
+    setTimeout(() => {
+      setSocialLoading(null)
+      setShowBadge(true)
+    }, 900)
   }
 
   return (
@@ -157,6 +162,15 @@ export default function Splash() {
       >
         By continuing you agree to our Terms and Privacy Policy
       </motion.p>
+
+      <GamificationBadge
+        show={showBadge}
+        badgeType="journey"
+        title="You've started your journey"
+        subtitle="Your profile is being created. This is the beginning of something genuinely different."
+        onDismiss={() => { setShowBadge(false); navigate('/how-coupld-works') }}
+        autoDismissMs={3000}
+      />
     </motion.div>
   )
 }
