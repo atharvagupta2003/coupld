@@ -23,9 +23,9 @@ export default function BottomNav() {
       <div
         className="fixed bottom-0 left-0 right-0 mx-auto max-w-[390px] flex items-end justify-around z-30"
         style={{
-          background: 'rgba(28,11,58,0.96)',
+          background: 'rgba(255,255,255,0.96)',
           backdropFilter: 'blur(20px)',
-          borderTop: '1px solid rgba(184,160,212,0.1)',
+          borderTop: '1px solid rgba(0,0,0,0.08)',
           height: 68,
           paddingBottom: 'env(safe-area-inset-bottom)',
         }}
@@ -58,10 +58,10 @@ export default function BottomNav() {
               ) : (
                 <>
                   <motion.div animate={{ scale: isActive ? 1.12 : 1 }} transition={{ duration: 0.15 }}>
-                    {Icon && <Icon size={22} style={{ color: isActive ? '#D4A843' : '#9B8FB0' }} />}
+                    {Icon && <Icon size={22} style={{ color: isActive ? '#0D9488' : '#6B7280' }} />}
                   </motion.div>
                   {isActive && (
-                    <span className="font-semibold mt-0.5" style={{ color: '#D4A843', fontSize: 10 }}>
+                    <span className="font-semibold mt-0.5" style={{ color: '#0D9488', fontSize: 10 }}>
                       {label}
                     </span>
                   )}

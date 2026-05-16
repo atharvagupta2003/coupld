@@ -15,7 +15,7 @@ export default function ExplicitReceivedWarning() {
 
   return (
     <motion.div
-      className="flex flex-col h-screen w-full bg-[#1C0B3A]"
+      className="flex flex-col h-screen w-full bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -23,19 +23,19 @@ export default function ExplicitReceivedWarning() {
       {/* Header */}
       <div
         className="flex items-center gap-3 px-4 py-3 shrink-0"
-        style={{ background: 'rgba(28,11,58,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.1)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
         <button onClick={() => navigate(-1)} className="pl-8">
-          <ChevronLeft size={22} className="text-white" />
+          <ChevronLeft size={22} className="text-gray-900" />
         </button>
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
-          style={{ background: 'rgba(184,160,212,0.12)', border: '1px solid rgba(184,160,212,0.2)' }}
+          style={{ background: 'rgba(0,0,0,0.06)', border: '1px solid rgba(0,0,0,0.1)' }}
         >
-          <span className="text-white font-bold text-sm">M</span>
+          <span className="text-gray-900 font-bold text-sm">M</span>
         </div>
         <div className="flex-1">
-          <p className="text-white font-semibold text-sm">Marcus</p>
+          <p className="text-gray-900 font-semibold text-sm">Marcus</p>
           <p className="text-brand-textSub" style={{ fontSize: 11 }}>Matched 5 days ago</p>
         </div>
         {stage !== 'reported' && (
@@ -67,11 +67,11 @@ export default function ExplicitReceivedWarning() {
                   maxWidth: '78%',
                   padding: '10px 14px',
                   borderRadius: isUser ? '16px 4px 16px 16px' : '4px 16px 16px 16px',
-                  background: isUser ? '#2D1B4E' : 'rgba(184,160,212,0.10)',
-                  border: isUser ? 'none' : '1px solid rgba(184,160,212,0.15)',
+                  background: isUser ? '#0D9488' : 'rgba(0,0,0,0.04)',
+                  border: isUser ? 'none' : '1px solid rgba(0,0,0,0.08)',
                 }}
               >
-                <p className="text-white text-sm leading-relaxed">{msg.text}</p>
+                <p className={`${isUser ? 'text-white' : 'text-gray-900'} text-sm leading-relaxed`}>{msg.text}</p>
                 <p className="text-brand-textSub mt-1" style={{ fontSize: 10 }}>{msg.time}</p>
               </div>
             </motion.div>
@@ -112,7 +112,7 @@ export default function ExplicitReceivedWarning() {
               <div
                 className="absolute inset-0"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(194,84,122,0.2) 0%, rgba(45,27,78,0.4) 100%)',
+                  background: 'linear-gradient(135deg, rgba(194,84,122,0.2) 0%, rgba(240,240,250,0.9) 100%)',
                   filter: stage === 'revealed' ? 'none' : 'blur(0px)',
                 }}
               />
@@ -139,8 +139,8 @@ export default function ExplicitReceivedWarning() {
                     style={{ background: 'rgba(194,84,122,0.12)', border: '1px solid rgba(194,84,122,0.3)' }}
                   >
                     <ShieldAlert size={28} style={{ color: '#C2547A' }} className="mx-auto mb-2" />
-                    <p className="text-white font-semibold text-sm mb-1">Policy Violation</p>
-                    <p className="text-brand-textSub text-xs">This content violates Coupld's community standards. Marcus has received a warning.</p>
+                    <p className="text-gray-900 font-semibold text-sm mb-1">Policy Violation</p>
+                    <p className="text-gray-500 text-xs">This content violates Coupld's community standards. Marcus has received a warning.</p>
                   </div>
                 </motion.div>
               )}
@@ -150,7 +150,7 @@ export default function ExplicitReceivedWarning() {
             {stage === 'hidden' && (
               <div
                 className="flex gap-2 px-4 py-3"
-                style={{ background: 'rgba(28,11,58,0.9)' }}
+                style={{ background: 'rgba(255,255,255,0.9)' }}
               >
                 <button
                   onClick={() => setStage('reported')}
@@ -162,7 +162,7 @@ export default function ExplicitReceivedWarning() {
                 <button
                   onClick={() => setStage('confirm')}
                   className="flex-1 py-2.5 rounded-xl text-xs font-semibold"
-                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(184,160,212,0.2)', color: '#9B8FB0' }}
+                  style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.1)', color: '#6B7280' }}
                 >
                   View anyway
                 </button>
@@ -172,7 +172,7 @@ export default function ExplicitReceivedWarning() {
             {stage === 'revealed' && (
               <div
                 className="flex gap-2 px-4 py-3"
-                style={{ background: 'rgba(28,11,58,0.9)' }}
+                style={{ background: 'rgba(255,255,255,0.9)' }}
               >
                 <button
                   onClick={() => setStage('reported')}
@@ -209,10 +209,10 @@ export default function ExplicitReceivedWarning() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
           className="rounded-2xl p-4 mt-1"
-          style={{ background: 'rgba(184,160,212,0.06)', border: '1px solid rgba(184,160,212,0.15)' }}
+          style={{ background: 'rgba(13,148,136,0.05)', border: '1px solid rgba(13,148,136,0.15)' }}
         >
           <p className="text-brand-lavender font-semibold uppercase tracking-widest mb-1.5" style={{ fontSize: 9 }}>From Cupid</p>
-          <p className="text-white text-xs leading-relaxed">
+          <p className="text-gray-900 text-xs leading-relaxed">
             You should never have to see something you don't want to. Coupld hides flagged content automatically. If you're uncomfortable with this match, you can remove them from your list at any time.
           </p>
         </motion.div>
@@ -231,22 +231,22 @@ export default function ExplicitReceivedWarning() {
               exit={{ opacity: 0, scale: 0.92 }}
               transition={{ type: 'spring', damping: 20 }}
             >
-              <div className="p-6" style={{ background: '#1E0D3C', border: '1px solid rgba(194,84,122,0.3)' }}>
+              <div className="p-6" style={{ background: '#FFFFFF', border: '1px solid rgba(194,84,122,0.3)' }}>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <AlertTriangle size={18} style={{ color: '#D4A843' }} />
-                    <p className="text-white font-bold text-base">Are you sure?</p>
+                    <AlertTriangle size={18} style={{ color: '#D97706' }} />
+                    <p className="text-gray-900 font-bold text-base">Are you sure?</p>
                   </div>
-                  <button onClick={() => setStage('hidden')}><X size={18} className="text-brand-textSub" /></button>
+                  <button onClick={() => setStage('hidden')}><X size={18} className="text-gray-400" /></button>
                 </div>
-                <p className="text-brand-textSub text-sm leading-relaxed mb-5">
+                <p className="text-gray-500 text-sm leading-relaxed mb-5">
                   This content was hidden for your protection. Viewing it doesn't affect your account, but we encourage reporting behaviour like this.
                 </p>
                 <div className="flex gap-2">
                   <button
                     onClick={() => setStage('hidden')}
                     className="flex-1 py-3 rounded-xl font-semibold text-sm"
-                    style={{ background: 'rgba(255,255,255,0.06)', color: '#9B8FB0', border: '1px solid rgba(184,160,212,0.2)' }}
+                    style={{ background: 'rgba(0,0,0,0.04)', color: '#6B7280', border: '1px solid rgba(0,0,0,0.08)' }}
                   >
                     Go back
                   </button>
@@ -268,11 +268,11 @@ export default function ExplicitReceivedWarning() {
       {/* Input bar */}
       <div
         className="flex items-center gap-2 px-4 py-3 shrink-0"
-        style={{ background: 'rgba(28,11,58,0.97)', borderTop: '1px solid rgba(184,160,212,0.1)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', borderTop: '1px solid rgba(0,0,0,0.08)' }}
       >
         <div
-          className="flex-1 px-4 py-2.5 rounded-xl text-brand-textSub/50 text-sm"
-          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.12)' }}
+          className="flex-1 px-4 py-2.5 rounded-xl text-gray-400 text-sm"
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           Message Marcus…
         </div>

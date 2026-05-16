@@ -19,9 +19,9 @@ interface Badge {
 }
 
 const RARITY_COLORS = {
-  common:    { bg: 'rgba(184,160,212,0.1)',  border: 'rgba(184,160,212,0.25)', text: '#B8A0D4', glow: 'rgba(184,160,212,0.15)' },
+  common:    { bg: 'rgba(13,148,136,0.08)',  border: 'rgba(13,148,136,0.2)',  text: '#0D9488', glow: 'rgba(13,148,136,0.1)' },
   rare:      { bg: 'rgba(107,181,196,0.1)',   border: 'rgba(107,181,196,0.3)',  text: '#6BB5C4', glow: 'rgba(107,181,196,0.2)'  },
-  epic:      { bg: 'rgba(212,168,67,0.1)',    border: 'rgba(212,168,67,0.35)',  text: '#D4A843', glow: 'rgba(212,168,67,0.2)'  },
+  epic:      { bg: 'rgba(20,184,166,0.08)',   border: 'rgba(20,184,166,0.3)',   text: '#14B8A6', glow: 'rgba(20,184,166,0.15)' },
   legendary: { bg: 'rgba(232,96,122,0.1)',    border: 'rgba(232,96,122,0.4)',   text: '#E8607A', glow: 'rgba(232,96,122,0.25)' },
 }
 
@@ -72,7 +72,7 @@ function ProgressBar({ value, color }: { value: number; color: string }) {
     return () => clearTimeout(t)
   }, [value])
   return (
-    <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)' }}>
+    <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(0,0,0,0.08)' }}>
       <div
         className="h-full rounded-full transition-all duration-1000"
         style={{ width: `${width}%`, background: `linear-gradient(90deg, ${color}99, ${color})` }}
@@ -100,7 +100,7 @@ export default function Badges() {
 
   return (
     <motion.div
-      className="flex flex-col w-full min-h-screen bg-[#1C0B3A] pb-28"
+      className="flex flex-col w-full min-h-screen bg-white pb-28"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -109,9 +109,9 @@ export default function Badges() {
       {/* Top bar */}
       <div
         className="sticky top-0 z-10 px-5 py-4"
-        style={{ background: 'rgba(28,11,58,0.96)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.08)' }}
+        style={{ background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
-        <h1 className="text-white font-bold text-xl">Badges &amp; Journey</h1>
+        <h1 className="text-gray-900 font-bold text-xl">Badges &amp; Journey</h1>
         <p className="text-brand-textSub text-xs mt-0.5">{unlockedCount} of {ALL_BADGES.length} unlocked</p>
       </div>
 
@@ -122,7 +122,7 @@ export default function Badges() {
         transition={{ delay: 0.1 }}
         className="mx-5 mt-5 rounded-2xl p-5"
         style={{
-          background: 'linear-gradient(135deg, rgba(184,160,212,0.1) 0%, rgba(28,11,58,0.6) 100%)',
+          background: 'linear-gradient(135deg, rgba(13,148,136,0.06) 0%, rgba(249,250,251,1) 100%)',
           border: `1px solid ${currentLevel.color}40`,
           boxShadow: `0 0 30px ${currentLevel.color}18`,
         }}
@@ -131,7 +131,7 @@ export default function Badges() {
           <div>
             <div className="flex items-center gap-2">
               <span className="font-bold text-2xl" style={{ color: currentLevel.color }}>Lv.{currentLevel.level}</span>
-              <span className="font-semibold text-lg text-white">{currentLevel.label}</span>
+              <span className="font-semibold text-lg text-gray-900">{currentLevel.label}</span>
             </div>
             <p className="text-brand-textSub text-xs mt-0.5">
               {nextLevel ? `${xpNeeded - xpIntoLevel} XP to ${nextLevel.label}` : 'Max level reached'}
@@ -152,7 +152,7 @@ export default function Badges() {
             { label: 'Streak', value: '3d' },
           ].map(s => (
             <div key={s.label} className="flex-1 text-center">
-              <p className="text-white font-bold text-lg">{s.value}</p>
+              <p className="text-gray-900 font-bold text-lg">{s.value}</p>
               <p className="text-brand-textSub text-xs">{s.label}</p>
             </div>
           ))}
@@ -168,8 +168,8 @@ export default function Badges() {
             className="shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
             style={
               activeCategory === cat
-                ? { background: '#B8A0D4', color: '#1C0B3A' }
-                : { background: 'rgba(255,255,255,0.05)', color: '#9B8FB0', border: '1px solid rgba(184,160,212,0.18)' }
+                ? { background: '#0D9488', color: 'white' }
+                : { background: 'rgba(0,0,0,0.04)', color: '#6B7280', border: '1px solid rgba(0,0,0,0.08)' }
             }
           >
             {cat}
@@ -192,8 +192,8 @@ export default function Badges() {
               onClick={() => setSelectedBadge(badge)}
               className="relative rounded-2xl p-4 flex flex-col items-center text-center text-left transition-all active:scale-97"
               style={{
-                background: badge.unlocked ? rc.bg : 'rgba(255,255,255,0.03)',
-                border: badge.unlocked ? `1px solid ${rc.border}` : '1px solid rgba(184,160,212,0.1)',
+                background: badge.unlocked ? rc.bg : 'rgba(0,0,0,0.02)',
+                border: badge.unlocked ? `1px solid ${rc.border}` : '1px solid rgba(0,0,0,0.07)',
                 boxShadow: badge.unlocked ? `0 0 20px ${rc.glow}` : 'none',
               }}
             >
@@ -214,13 +214,13 @@ export default function Badges() {
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-2.5 mt-1"
                 style={{
-                  background: badge.unlocked ? `${rc.text}18` : 'rgba(255,255,255,0.04)',
+                  background: badge.unlocked ? `${rc.text}18` : 'rgba(0,0,0,0.04)',
                 }}
               >
-                <Icon size={24} style={{ color: badge.unlocked ? rc.text : '#4A3866' }} />
+                <Icon size={24} style={{ color: badge.unlocked ? rc.text : '#D1D5DB' }} />
               </div>
 
-              <p className={`font-bold text-xs mb-0.5 ${badge.unlocked ? 'text-white' : 'text-brand-textSub'}`}>
+              <p className={`font-bold text-xs mb-0.5 ${badge.unlocked ? 'text-gray-900' : 'text-brand-textSub'}`}>
                 {badge.label}
               </p>
               <p className="text-brand-textSub leading-tight" style={{ fontSize: 10 }}>
@@ -232,8 +232,8 @@ export default function Badges() {
                 className="mt-2 px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider"
                 style={{
                   fontSize: 8,
-                  background: badge.unlocked ? `${rc.text}18` : 'rgba(255,255,255,0.04)',
-                  color: badge.unlocked ? rc.text : '#4A3866',
+                  background: badge.unlocked ? `${rc.text}18` : 'rgba(0,0,0,0.04)',
+                  color: badge.unlocked ? rc.text : '#9CA3AF',
                 }}
               >
                 {badge.rarity}
@@ -256,7 +256,7 @@ export default function Badges() {
             />
             <motion.div
               className="fixed bottom-0 left-0 right-0 mx-auto max-w-[390px] z-40 rounded-t-3xl p-6"
-              style={{ background: '#1C0B3A', border: '1px solid rgba(184,160,212,0.18)' }}
+              style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)' }}
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
@@ -272,16 +272,16 @@ export default function Badges() {
                       <div
                         className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0"
                         style={{
-                          background: b.unlocked ? rc.bg : 'rgba(255,255,255,0.04)',
-                          border: b.unlocked ? `1px solid ${rc.border}` : '1px solid rgba(184,160,212,0.12)',
+                          background: b.unlocked ? rc.bg : 'rgba(0,0,0,0.04)',
+                          border: b.unlocked ? `1px solid ${rc.border}` : '1px solid rgba(0,0,0,0.08)',
                           boxShadow: b.unlocked ? `0 0 24px ${rc.glow}` : 'none',
                         }}
                       >
-                        <Icon size={30} style={{ color: b.unlocked ? rc.text : '#4A3866' }} />
+                        <Icon size={30} style={{ color: b.unlocked ? rc.text : '#D1D5DB' }} />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-0.5">
-                          <p className="text-white font-bold text-lg">{b.label}</p>
+                          <p className="text-gray-900 font-bold text-lg">{b.label}</p>
                         </div>
                         <div
                           className="inline-block px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider"
@@ -311,7 +311,7 @@ export default function Badges() {
                     {!b.unlocked && (
                       <div
                         className="flex items-center gap-2 rounded-xl px-4 py-2.5 mb-4"
-                        style={{ background: 'rgba(184,160,212,0.06)', border: '1px solid rgba(184,160,212,0.15)' }}
+                        style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
                       >
                         <Lock size={14} className="text-brand-textSub" />
                         <p className="text-brand-textSub text-sm">Complete the action above to unlock</p>
@@ -321,7 +321,7 @@ export default function Badges() {
                     <button
                       onClick={() => setSelectedBadge(null)}
                       className="w-full py-3 rounded-xl font-semibold text-sm"
-                      style={{ background: 'rgba(255,255,255,0.06)', color: '#9B8FB0', border: '1px solid rgba(184,160,212,0.18)' }}
+                      style={{ background: 'rgba(0,0,0,0.04)', color: '#6B7280', border: '1px solid rgba(0,0,0,0.08)' }}
                     >
                       Close
                     </button>

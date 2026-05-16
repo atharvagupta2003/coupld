@@ -268,7 +268,7 @@ export default function Onboarding() {
 
   return (
     <motion.div
-      className="flex flex-col h-screen w-full bg-[#1C0B3A]"
+      className="flex flex-col h-screen w-full bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -279,18 +279,18 @@ export default function Onboarding() {
       <div
         className="flex items-center gap-3 px-4 py-3 shrink-0 z-10"
         style={{
-          background: 'rgba(28,11,58,0.95)',
+          background: 'rgba(255,255,255,0.96)',
           backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(184,160,212,0.1)',
+          borderBottom: '1px solid rgba(0,0,0,0.08)',
         }}
       >
-        <button onClick={() => navigate('/choose-coach')} className="text-white">
+        <button onClick={() => navigate('/choose-coach')} className="text-gray-900">
           <ChevronLeft size={22} />
         </button>
         <div className="flex items-center gap-3 flex-1">
           <CoachFigure size={36} speaking={speaking} />
           <div>
-            <p className="text-white font-semibold text-sm leading-none">{coachName}</p>
+            <p className="text-gray-900 font-semibold text-sm leading-none">{coachName}</p>
             <p className="text-xs mt-0.5" style={{ color: authError ? '#C2547A' : '#9B8FB0' }}>
               {authError ? 'Voice unavailable — API key invalid' : speaking ? 'Speaking...' : 'Your Coach'}
             </p>
@@ -321,13 +321,13 @@ export default function Onboarding() {
                 </div>
               )}
               <div
-                className="text-white text-sm leading-relaxed whitespace-pre-line"
+                className={`${msg.from === 'coach' ? 'text-gray-900' : 'text-white'} text-sm leading-relaxed whitespace-pre-line`}
                 style={{
                   maxWidth: '78%',
                   padding: '12px 16px',
                   borderRadius: msg.from === 'coach' ? '4px 16px 16px 16px' : '16px 4px 16px 16px',
-                  background: msg.from === 'coach' ? 'rgba(184,160,212,0.10)' : '#2D1B4E',
-                  border: msg.from === 'coach' ? '1px solid rgba(184,160,212,0.18)' : 'none',
+                  background: msg.from === 'coach' ? 'rgba(0,0,0,0.04)' : '#0D9488',
+                  border: msg.from === 'coach' ? '1px solid rgba(0,0,0,0.08)' : 'none',
                 }}
               >
                 {msg.text}
@@ -345,8 +345,8 @@ export default function Onboarding() {
             style={{
               padding: '12px 16px',
               borderRadius: '4px 16px 16px 16px',
-              background: 'rgba(184,160,212,0.10)',
-              border: '1px solid rgba(184,160,212,0.18)',
+              background: 'rgba(0,0,0,0.04)',
+              border: '1px solid rgba(0,0,0,0.08)',
               width: 64,
             }}
           >
@@ -376,8 +376,8 @@ export default function Onboarding() {
                   style={{
                     width: 96,
                     height: 116,
-                    background: 'rgba(184,160,212,0.07)',
-                    border: '1.5px dashed rgba(184,160,212,0.28)',
+                    background: 'rgba(0,0,0,0.03)',
+                    border: '1.5px dashed rgba(13,148,136,0.35)',
                   }}
                 >
                   {photo ? (
@@ -391,7 +391,7 @@ export default function Onboarding() {
                     <div className="flex flex-col items-center gap-1.5">
                       <div
                         className="w-8 h-8 rounded-full flex items-center justify-center"
-                        style={{ background: 'rgba(184,160,212,0.15)' }}
+                        style={{ background: 'rgba(13,148,136,0.10)' }}
                       >
                         <Plus size={16} className="text-brand-lavender" />
                       </div>
@@ -411,7 +411,7 @@ export default function Onboarding() {
       <div
         className="fixed bottom-0 w-full max-w-[390px] z-20 px-4 pb-6 pt-3"
         style={{
-          background: 'linear-gradient(0deg, #1C0B3A 70%, transparent)',
+          background: 'linear-gradient(0deg, #FFFFFF 70%, transparent)',
         }}
       >
         {/* Chips */}
@@ -421,10 +421,10 @@ export default function Onboarding() {
               <button
                 key={chip}
                 onClick={() => (isPhotoStep ? handlePhotoResponse(chip) : handleChip(chip))}
-                className="shrink-0 px-4 py-2.5 rounded-full text-sm font-medium text-white transition-all active:scale-95"
+                className="shrink-0 px-4 py-2.5 rounded-full text-sm font-medium text-teal-700 transition-all active:scale-95"
                 style={{
-                  border: '1px solid rgba(184,160,212,0.4)',
-                  background: 'rgba(184,160,212,0.08)',
+                  border: '1px solid rgba(13,148,136,0.3)',
+                  background: 'rgba(13,148,136,0.06)',
                   backdropFilter: 'blur(8px)',
                 }}
               >
@@ -438,17 +438,17 @@ export default function Onboarding() {
         {chips.length > 0 && !isPhotoStep && (
           <div
             className="flex items-center gap-2 rounded-xl px-3 py-2"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.15)' }}
+            style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}
           >
             <input
               value={typeInput}
               onChange={(e) => setTypeInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleTypeSubmit()}
               placeholder="Or type your own answer..."
-              className="flex-1 text-white text-sm bg-transparent outline-none placeholder:text-brand-textSub/40"
+              className="flex-1 text-gray-900 text-sm bg-transparent outline-none placeholder:text-brand-textSub/50"
             />
             <button onClick={handleTypeSubmit} disabled={!typeInput.trim()}>
-              <Send size={16} style={{ color: typeInput.trim() ? '#B8A0D4' : '#4A3660' }} />
+              <Send size={16} style={{ color: typeInput.trim() ? '#0D9488' : '#D1D5DB' }} />
             </button>
           </div>
         )}
@@ -474,7 +474,7 @@ function TransitionState({ coachId, onDone }: { coachId: CoachId; onDone: () => 
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center min-h-screen bg-[#1C0B3A] gap-6"
+      className="flex flex-col items-center justify-center min-h-screen bg-white gap-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -30 }}

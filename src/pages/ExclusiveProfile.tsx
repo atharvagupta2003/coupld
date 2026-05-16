@@ -92,7 +92,7 @@ export default function ExclusiveProfile() {
 
   return (
     <motion.div
-      className="flex flex-col w-full min-h-screen bg-[#1C0B3A] pb-10"
+      className="flex flex-col w-full min-h-screen bg-white pb-10"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -100,12 +100,12 @@ export default function ExclusiveProfile() {
       {/* Header */}
       <div
         className="sticky top-0 z-10 flex items-center gap-3 px-4 py-4"
-        style={{ background: 'rgba(28,11,58,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.08)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
         <button onClick={() => navigate(-1)} className="pl-8">
-          <ChevronLeft size={22} className="text-white" />
+          <ChevronLeft size={22} className="text-gray-900" />
         </button>
-        <h1 className="text-white font-bold text-lg flex-1">Couple Profile</h1>
+        <h1 className="text-gray-900 font-bold text-lg flex-1">Couple Profile</h1>
         <div
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
           style={{ background: 'rgba(232,96,122,0.12)', border: '1px solid rgba(232,96,122,0.35)' }}
@@ -121,13 +121,13 @@ export default function ExclusiveProfile() {
         <div className="flex items-center gap-0 mb-4">
           <div
             className="w-20 h-20 rounded-full overflow-hidden"
-            style={{ border: '3px solid rgba(184,160,212,0.5)', boxShadow: '0 0 24px rgba(184,160,212,0.25)' }}
+            style={{ border: '3px solid rgba(13,148,136,0.4)', boxShadow: '0 0 24px rgba(13,148,136,0.15)' }}
           >
             <img src={alexPhotos[0]} alt="Alex" className="w-full h-full object-cover" />
           </div>
           <div
             className="w-10 h-10 rounded-full flex items-center justify-center z-10 -mx-2"
-            style={{ background: 'linear-gradient(135deg, #E8607A, #C2547A)', border: '3px solid #1C0B3A', boxShadow: '0 0 16px rgba(232,96,122,0.5)' }}
+            style={{ background: 'linear-gradient(135deg, #E8607A, #C2547A)', border: '3px solid #FFFFFF', boxShadow: '0 0 16px rgba(232,96,122,0.4)' }}
           >
             <Heart size={16} fill="white" className="text-white" />
           </div>
@@ -139,7 +139,7 @@ export default function ExclusiveProfile() {
           </div>
         </div>
 
-        <h2 className="text-white font-bold text-2xl">Alex &amp; Isabelle</h2>
+        <h2 className="text-gray-900 font-bold text-2xl">Alex &amp; Isabelle</h2>
         <p className="text-brand-textSub text-sm mt-1">Found each other on Coupld · April 2026</p>
 
         {/* Stats */}
@@ -150,7 +150,7 @@ export default function ExclusiveProfile() {
             { label: 'Compatibility', value: '94%' },
           ].map(s => (
             <div key={s.label} className="text-center">
-              <p className="text-white font-bold text-lg">{s.value}</p>
+              <p className="text-gray-900 font-bold text-lg">{s.value}</p>
               <p className="text-brand-textSub text-xs">{s.label}</p>
             </div>
           ))}
@@ -172,11 +172,11 @@ export default function ExclusiveProfile() {
         {/* Upcoming schedule */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-white font-semibold text-sm">Upcoming Schedule</p>
+            <p className="text-gray-900 font-semibold text-sm">Upcoming Schedule</p>
             <button
               onClick={() => navigate('/date-planning')}
               className="text-xs font-semibold"
-              style={{ color: '#B8A0D4' }}
+              style={{ color: '#0D9488' }}
             >
               + Add
             </button>
@@ -193,8 +193,8 @@ export default function ExclusiveProfile() {
                   transition={{ delay: 0.05 * i }}
                   className="flex items-center gap-3 rounded-2xl p-4"
                   style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: `1px solid ${item.confirmed ? `${item.color}35` : 'rgba(184,160,212,0.12)'}`,
+                    background: 'rgba(0,0,0,0.02)',
+                    border: `1px solid ${item.confirmed ? `${item.color}35` : 'rgba(0,0,0,0.08)'}`,
                   }}
                 >
                   <div
@@ -205,7 +205,7 @@ export default function ExclusiveProfile() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <p className="text-white font-semibold text-sm truncate">{item.title}</p>
+                      <p className="text-gray-900 font-semibold text-sm truncate">{item.title}</p>
                       <span
                         className="shrink-0 px-1.5 py-0.5 rounded-full font-semibold uppercase"
                         style={{ fontSize: 8, background: `${item.color}18`, color: item.color }}
@@ -219,7 +219,7 @@ export default function ExclusiveProfile() {
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-white font-semibold text-xs">{item.date}</p>
+                    <p className="text-gray-900 font-semibold text-xs">{item.date}</p>
                     <div className="flex items-center gap-1 mt-0.5 justify-end">
                       <Clock size={10} className="text-brand-textSub" />
                       <p className="text-brand-textSub" style={{ fontSize: 10 }}>{item.time}</p>
@@ -238,21 +238,21 @@ export default function ExclusiveProfile() {
 
         {/* Milestones */}
         <div>
-          <p className="text-white font-semibold text-sm mb-3">Relationship Milestones</p>
+          <p className="text-gray-900 font-semibold text-sm mb-3">Relationship Milestones</p>
           <div className="flex flex-col gap-2">
             {MILESTONES.map((m, i) => (
               <div
                 key={m.label}
                 className="flex items-center gap-3 px-4 py-3 rounded-xl"
                 style={{
-                  background: m.done ? 'rgba(120,196,160,0.07)' : 'rgba(255,255,255,0.03)',
-                  border: m.done ? '1px solid rgba(120,196,160,0.25)' : '1px solid rgba(184,160,212,0.1)',
+                  background: m.done ? 'rgba(120,196,160,0.07)' : 'rgba(0,0,0,0.02)',
+                  border: m.done ? '1px solid rgba(120,196,160,0.25)' : '1px solid rgba(0,0,0,0.08)',
                 }}
               >
-                <CheckCircle size={15} style={{ color: m.done ? '#78C4A0' : '#4A3866' }} className="shrink-0" />
-                <p className={`text-sm flex-1 ${m.done ? 'text-white' : 'text-brand-textSub'}`}>{m.label}</p>
+                <CheckCircle size={15} style={{ color: m.done ? '#78C4A0' : '#D1D5DB' }} className="shrink-0" />
+                <p className={`text-sm flex-1 ${m.done ? 'text-gray-900' : 'text-brand-textSub'}`}>{m.label}</p>
                 {m.date && <p className="text-brand-textSub shrink-0" style={{ fontSize: 10 }}>{m.date}</p>}
-                {!m.done && <p className="text-xs shrink-0" style={{ color: '#4A3866', fontSize: 10 }}>Upcoming</p>}
+                {!m.done && <p className="text-xs shrink-0" style={{ color: '#9CA3AF', fontSize: 10 }}>Upcoming</p>}
               </div>
             ))}
           </div>
@@ -275,7 +275,7 @@ export default function ExclusiveProfile() {
                 style={{ background: `${action.color}10`, border: `1px solid ${action.color}28` }}
               >
                 <Icon size={20} style={{ color: action.color }} />
-                <p className="text-white text-xs font-semibold">{action.label}</p>
+                <p className="text-gray-900 text-xs font-semibold">{action.label}</p>
               </button>
             )
           })}

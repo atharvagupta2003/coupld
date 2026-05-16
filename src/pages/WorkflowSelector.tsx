@@ -30,7 +30,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: UserPlus,
         path: '/splash',
         accent: '#B8A0D4',
-        bg: 'linear-gradient(135deg, rgba(184,160,212,0.14) 0%, rgba(45,27,78,0.4) 100%)',
+        bg: 'linear-gradient(135deg, rgba(184,160,212,0.14) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(184,160,212,0.3)',
         tag: 'Start here',
       },
@@ -41,7 +41,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: LogIn,
         path: '/login',
         accent: '#8890C4',
-        bg: 'linear-gradient(135deg, rgba(136,144,196,0.12) 0%, rgba(45,27,78,0.35) 100%)',
+        bg: 'linear-gradient(135deg, rgba(136,144,196,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(136,144,196,0.28)',
       },
     ],
@@ -56,7 +56,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Heart,
         path: '/home',
         accent: '#C2547A',
-        bg: 'linear-gradient(135deg, rgba(194,84,122,0.14) 0%, rgba(45,27,78,0.4) 100%)',
+        bg: 'linear-gradient(135deg, rgba(194,84,122,0.14) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(194,84,122,0.3)',
       },
       {
@@ -66,7 +66,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Eye,
         path: '/profile/1',
         accent: '#6BB5C4',
-        bg: 'linear-gradient(135deg, rgba(107,181,196,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(107,181,196,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(107,181,196,0.28)',
       },
       {
@@ -76,7 +76,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Coins,
         path: '/upgrade',
         accent: '#D4A843',
-        bg: 'linear-gradient(135deg, rgba(212,168,67,0.13) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(212,168,67,0.13) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(212,168,67,0.28)',
       },
     ],
@@ -91,7 +91,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: MessageCircle,
         path: '/messages?thread=1',
         accent: '#D4A843',
-        bg: 'linear-gradient(135deg, rgba(212,168,67,0.13) 0%, rgba(45,27,78,0.4) 100%)',
+        bg: 'linear-gradient(135deg, rgba(212,168,67,0.13) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(212,168,67,0.28)',
       },
       {
@@ -101,7 +101,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Sparkles,
         path: '/coach',
         accent: '#E8A0D4',
-        bg: 'linear-gradient(135deg, rgba(232,160,212,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(232,160,212,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(232,160,212,0.28)',
       },
     ],
@@ -116,7 +116,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Calendar,
         path: '/date-planning',
         accent: '#78C4A0',
-        bg: 'linear-gradient(135deg, rgba(120,196,160,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(120,196,160,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(120,196,160,0.28)',
         tag: '15% off',
       },
@@ -127,7 +127,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Gift,
         path: '/gifts',
         accent: '#E8607A',
-        bg: 'linear-gradient(135deg, rgba(232,96,122,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(232,96,122,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(232,96,122,0.28)',
       },
     ],
@@ -142,7 +142,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: ThumbsUp,
         path: '/post-date-feedback',
         accent: '#78C4A0',
-        bg: 'linear-gradient(135deg, rgba(120,196,160,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(120,196,160,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(120,196,160,0.28)',
       },
       {
@@ -152,7 +152,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Heart,
         path: '/exclusive',
         accent: '#E8607A',
-        bg: 'linear-gradient(135deg, rgba(232,96,122,0.13) 0%, rgba(45,27,78,0.4) 100%)',
+        bg: 'linear-gradient(135deg, rgba(232,96,122,0.13) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(232,96,122,0.28)',
         tag: 'Endgame',
       },
@@ -163,7 +163,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Sparkles,
         path: '/exclusive-coach',
         accent: '#C2547A',
-        bg: 'linear-gradient(135deg, rgba(194,84,122,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(194,84,122,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(194,84,122,0.28)',
       },
       {
@@ -173,7 +173,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Users,
         path: '/exclusive-profile',
         accent: '#E8607A',
-        bg: 'linear-gradient(135deg, rgba(232,96,122,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(232,96,122,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(232,96,122,0.28)',
       },
     ],
@@ -188,7 +188,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: ShieldAlert,
         path: '/safety/sent',
         accent: '#C2547A',
-        bg: 'linear-gradient(135deg, rgba(194,84,122,0.13) 0%, rgba(45,27,78,0.4) 100%)',
+        bg: 'linear-gradient(135deg, rgba(194,84,122,0.13) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(194,84,122,0.3)',
         tag: 'Safety',
       },
@@ -199,7 +199,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: ShieldOff,
         path: '/safety/received',
         accent: '#D4A843',
-        bg: 'linear-gradient(135deg, rgba(212,168,67,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(212,168,67,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(212,168,67,0.28)',
         tag: 'Safety',
       },
@@ -215,7 +215,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: User,
         path: '/profile',
         accent: '#6BB5C4',
-        bg: 'linear-gradient(135deg, rgba(107,181,196,0.13) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(107,181,196,0.13) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(107,181,196,0.28)',
       },
       {
@@ -225,7 +225,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Award,
         path: '/badges',
         accent: '#D4A843',
-        bg: 'linear-gradient(135deg, rgba(212,168,67,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(212,168,67,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(212,168,67,0.25)',
       },
       {
@@ -235,7 +235,7 @@ const sections: { label: string; workflows: Workflow[] }[] = [
         icon: Crown,
         path: '/upgrade',
         accent: '#B8A0D4',
-        bg: 'linear-gradient(135deg, rgba(184,160,212,0.12) 0%, rgba(45,27,78,0.38) 100%)',
+        bg: 'linear-gradient(135deg, rgba(184,160,212,0.12) 0%, rgba(249,250,251,1) 100%)',
         border: 'rgba(184,160,212,0.25)',
       },
     ],
@@ -249,7 +249,7 @@ export default function WorkflowSelector() {
 
   return (
     <motion.div
-      className="flex flex-col min-h-screen w-full bg-[#0D0618] px-5 pt-12 pb-12 overflow-y-auto"
+      className="flex flex-col min-h-screen w-full bg-white px-5 pt-12 pb-12 overflow-y-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -259,7 +259,7 @@ export default function WorkflowSelector() {
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 70% 45% at 50% 0%, rgba(75,32,128,0.38) 0%, transparent 68%)',
+          background: 'radial-gradient(ellipse 70% 45% at 50% 0%, rgba(13,148,136,0.08) 0%, transparent 68%)',
         }}
       />
 
@@ -276,7 +276,7 @@ export default function WorkflowSelector() {
         >
           <CupidCharacter size={60} />
         </motion.div>
-        <h1 className="text-white font-bold text-2xl mt-4 mb-1">Coupld Prototype</h1>
+        <h1 className="text-gray-900 font-bold text-2xl mt-4 mb-1">Coupld Prototype</h1>
         <p className="text-brand-textSub text-sm text-center">
           {totalWorkflows} workflows · {sections.length} sections · choose one to explore
         </p>
@@ -323,7 +323,7 @@ export default function WorkflowSelector() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <p className="text-white font-semibold text-sm">{wf.title}</p>
+                        <p className="text-gray-900 font-semibold text-sm">{wf.title}</p>
                         {wf.tag && (
                           <span
                             className="px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider shrink-0"

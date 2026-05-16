@@ -18,14 +18,14 @@ export default function AgeVerify() {
 
   return (
     <motion.div
-      className="flex flex-col min-h-screen w-full bg-[#1C0B3A] px-5 pt-14 pb-8"
+      className="flex flex-col min-h-screen w-full bg-white px-5 pt-14 pb-8"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.35 }}
     >
       <SkipButton />
-      <button onClick={() => navigate('/signup')} className="mb-6 text-white w-fit">
+      <button onClick={() => navigate('/signup')} className="mb-6 text-gray-900 w-fit">
         <ChevronLeft size={24} />
       </button>
 
@@ -33,7 +33,7 @@ export default function AgeVerify() {
         Step 1 of 2
       </p>
 
-      <h1 className="text-white font-bold text-2xl mb-2">Let's make sure you're you.</h1>
+      <h1 className="text-gray-900 font-bold text-2xl mb-2">Let's make sure you're you.</h1>
       <p className="text-brand-textSub text-sm leading-relaxed mb-8">
         We verify your age once to keep Coupld safe for everyone. Your ID is never stored after
         this step.
@@ -51,7 +51,7 @@ export default function AgeVerify() {
             <CreditCard size={24} className="text-brand-lavender shrink-0" />
           )}
           <div>
-            <p className="text-white font-semibold text-sm">
+            <p className="text-gray-900 font-semibold text-sm">
               {idUploaded ? 'ID uploaded' : 'Upload a photo ID'}
             </p>
             <p className="text-brand-textSub text-xs mt-0.5">
@@ -71,7 +71,7 @@ export default function AgeVerify() {
             <Camera size={24} className="text-brand-lavender shrink-0" />
           )}
           <div>
-            <p className="text-white font-semibold text-sm">
+            <p className="text-gray-900 font-semibold text-sm">
               {selfieUploaded ? 'Selfie captured' : 'Take a quick selfie'}
             </p>
             <p className="text-brand-textSub text-xs mt-0.5">
@@ -83,8 +83,8 @@ export default function AgeVerify() {
 
       <button
         onClick={() => navigate('/signup/onboarding')}
-        className="w-full py-4 rounded-xl font-bold text-[#1C0B3A] transition-opacity hover:opacity-90 active:scale-[0.98]"
-        style={{ backgroundColor: '#D4A843' }}
+        className="w-full py-4 rounded-xl font-bold text-white transition-opacity hover:opacity-90 active:scale-[0.98]"
+        style={{ backgroundColor: '#0D9488' }}
       >
         Verify and Continue
       </button>

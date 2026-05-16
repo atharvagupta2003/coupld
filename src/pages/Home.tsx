@@ -69,7 +69,7 @@ function HiddenPhotoCard() {
   return (
     <div
       className="w-full flex flex-col items-center justify-center gap-3"
-      style={{ height: 280, background: 'linear-gradient(145deg, rgba(45,27,78,0.8) 0%, rgba(28,11,58,1) 100%)' }}
+      style={{ height: 280, background: 'linear-gradient(145deg, rgba(204,251,241,0.5) 0%, rgba(240,253,250,1) 100%)' }}
     >
       {/* Silhouette */}
       <div
@@ -77,13 +77,13 @@ function HiddenPhotoCard() {
         style={{ width: 90, height: 90 }}
       >
         <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
-          <circle cx="45" cy="45" r="45" fill="rgba(184,160,212,0.08)" />
-          <circle cx="45" cy="32" r="16" fill="rgba(184,160,212,0.2)" />
-          <path d="M10 82 C10 60 25 52 45 52 C65 52 80 60 80 82Z" fill="rgba(184,160,212,0.2)" />
+          <circle cx="45" cy="45" r="45" fill="rgba(13,148,136,0.08)" />
+          <circle cx="45" cy="32" r="16" fill="rgba(13,148,136,0.15)" />
+          <path d="M10 82 C10 60 25 52 45 52 C65 52 80 60 80 82Z" fill="rgba(13,148,136,0.15)" />
         </svg>
         <div
           className="absolute bottom-0 right-0 w-7 h-7 rounded-full flex items-center justify-center"
-          style={{ background: 'rgba(28,11,58,0.9)', border: '2px solid rgba(184,160,212,0.3)' }}
+          style={{ background: 'rgba(255,255,255,0.9)', border: '2px solid rgba(13,148,136,0.25)' }}
         >
           <EyeOff size={13} className="text-brand-lavender" />
         </div>
@@ -140,7 +140,7 @@ export default function Home() {
 
   return (
     <motion.div
-      className="flex flex-col w-full min-h-screen bg-[#1C0B3A] pb-24"
+      className="flex flex-col w-full min-h-screen bg-white pb-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -149,9 +149,9 @@ export default function Home() {
       {/* Top bar */}
       <div
         className="sticky top-0 z-10 flex items-center justify-between px-5 py-4"
-        style={{ background: 'rgba(28,11,58,0.96)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.08)' }}
+        style={{ background: 'rgba(255,255,255,0.96)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
-        <span className="text-white font-bold text-lg pl-16">Coupld</span>
+        <span className="text-gray-900 font-bold text-lg pl-16">Coupld</span>
         <div className="flex items-center gap-2">
           <Bell size={20} className="text-brand-textSub" />
           {/* Credits badge */}
@@ -160,10 +160,10 @@ export default function Home() {
             initial={{ scale: 1.2 }}
             animate={{ scale: 1 }}
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-full"
-            style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.5)' }}
+            style={{ background: 'rgba(13,148,136,0.1)', border: '1px solid rgba(13,148,136,0.3)' }}
           >
-            <Coins size={12} style={{ color: '#D4A843' }} />
-            <span className="font-bold text-xs" style={{ color: '#D4A843' }}>{credits} credits</span>
+            <Coins size={12} style={{ color: '#0D9488' }} />
+            <span className="font-bold text-xs" style={{ color: '#0D9488' }}>{credits} credits</span>
           </motion.div>
         </div>
       </div>
@@ -176,7 +176,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="mx-4 mt-3 px-4 py-3 rounded-xl text-sm font-medium text-center"
-            style={{ background: 'rgba(194,84,122,0.15)', border: '1px solid rgba(194,84,122,0.35)', color: '#E08090' }}
+            style={{ background: 'rgba(225,29,72,0.08)', border: '1px solid rgba(225,29,72,0.25)', color: '#E11D48' }}
           >
             Not enough credits. <button onClick={() => navigate('/upgrade')} className="underline font-semibold">Upgrade to get more</button>
           </motion.div>
@@ -184,7 +184,7 @@ export default function Home() {
       </AnimatePresence>
 
       <div className="px-5 pt-5 pb-2">
-        <h2 className="text-white font-bold text-xl">Your Matches</h2>
+        <h2 className="text-gray-900 font-bold text-xl">Your Matches</h2>
         <p className="text-brand-textSub text-xs mt-1">
           5 curated for you · Replace any match for {REPLACE_COST} credits
         </p>
@@ -206,7 +206,7 @@ export default function Home() {
                   exit={{ opacity: 0, x: -40, scale: 0.95 }}
                   transition={{ delay: slotIdx * 0.06 }}
                   className="rounded-2xl overflow-hidden"
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.15)' }}
+                  style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}
                 >
                   <div className="relative">
                     <HiddenPhotoCard />
@@ -214,14 +214,14 @@ export default function Home() {
                     <div className="absolute top-3 left-3 flex gap-2">
                       <span
                         className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
-                        style={{ background: 'rgba(184,160,212,0.18)', border: '1px solid rgba(184,160,212,0.35)', color: '#B8A0D4' }}
+                        style={{ background: 'rgba(13,148,136,0.08)', border: '1px solid rgba(13,148,136,0.3)', color: '#0D9488' }}
                       >
                         <EyeOff size={10} /> Private mode
                       </span>
                     </div>
                     <span
                       className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold"
-                      style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid #D4A843', color: '#D4A843' }}
+                      style={{ background: 'rgba(13,148,136,0.1)', border: '1px solid #0D9488', color: '#0D9488' }}
                     >
                       {HIDDEN_PROFILE.compatibility}% match
                     </span>
@@ -229,7 +229,7 @@ export default function Home() {
 
                   <div className="p-4">
                     <div className="flex items-baseline justify-between mb-2">
-                      <span className="text-white font-bold text-lg">{HIDDEN_PROFILE.name}, {HIDDEN_PROFILE.age}</span>
+                      <span className="text-gray-900 font-bold text-lg">{HIDDEN_PROFILE.name}, {HIDDEN_PROFILE.age}</span>
                       <span className="text-brand-textSub text-xs">{HIDDEN_PROFILE.city}</span>
                     </div>
                     <div className="flex flex-wrap gap-1.5 mb-2">
@@ -237,7 +237,7 @@ export default function Home() {
                         <span
                           key={t}
                           className="px-2.5 py-1 rounded-full text-xs"
-                          style={{ background: 'transparent', border: '1px solid rgba(184,160,212,0.3)', color: '#B8A0D4' }}
+                          style={{ background: 'transparent', border: '1px solid rgba(13,148,136,0.25)', color: '#0D9488' }}
                         >
                           {t}
                         </span>
@@ -248,25 +248,25 @@ export default function Home() {
                     {/* Coach note */}
                     <div
                       className="mt-3 px-3 py-2.5 rounded-xl"
-                      style={{ background: 'rgba(184,160,212,0.06)', border: '1px solid rgba(184,160,212,0.15)' }}
+                      style={{ background: 'rgba(13,148,136,0.06)', border: '1px solid rgba(0,0,0,0.08)' }}
                     >
                       <p className="text-brand-textSub text-xs leading-relaxed italic">"{HIDDEN_PROFILE.coachNote}"</p>
                     </div>
                   </div>
 
-                  <div className="flex gap-2 px-4 py-3" style={{ borderTop: '1px solid rgba(184,160,212,0.1)' }}>
+                  <div className="flex gap-2 px-4 py-3" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
                     <button
                       onClick={() => handleReplace(slot.key, slotIdx)}
                       disabled={!!replacingKey}
                       className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-semibold shrink-0 transition-all disabled:opacity-40"
-                      style={{ border: '1px solid rgba(184,160,212,0.25)', color: '#9B8FB0', background: 'rgba(184,160,212,0.06)' }}
+                      style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#6B7280', background: 'rgba(0,0,0,0.04)' }}
                     >
                       <RefreshCw size={12} className={isReplacing ? 'animate-spin' : ''} />
                       {REPLACE_COST} cr
                     </button>
                     <button
-                      className="flex-1 py-2.5 rounded-xl text-sm font-bold text-[#1C0B3A]"
-                      style={{ background: '#D4A843' }}
+                      className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white"
+                      style={{ background: '#0D9488' }}
                     >
                       <span className="flex items-center justify-center gap-1.5">
                         <Eye size={14} />
@@ -288,7 +288,7 @@ export default function Home() {
                 exit={{ opacity: 0, x: -40, scale: 0.95 }}
                 transition={{ delay: slotIdx * 0.06 }}
                 className="rounded-2xl overflow-hidden"
-                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.15)' }}
+                style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}
               >
                 <div className="relative">
                   <img
@@ -299,7 +299,7 @@ export default function Home() {
                   />
                   <span
                     className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold"
-                    style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid #D4A843', color: '#D4A843' }}
+                    style={{ background: 'rgba(13,148,136,0.1)', border: '1px solid #0D9488', color: '#0D9488' }}
                   >
                     {profile.compatibility}% match
                   </span>
@@ -307,7 +307,7 @@ export default function Home() {
 
                 <div className="p-4">
                   <div className="flex items-baseline justify-between mb-2">
-                    <span className="text-white font-bold text-lg">{profile.name}, {profile.age}</span>
+                    <span className="text-gray-900 font-bold text-lg">{profile.name}, {profile.age}</span>
                     <span className="text-brand-textSub text-xs">{profile.city}</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5 mb-2">
@@ -315,7 +315,7 @@ export default function Home() {
                       <span
                         key={t}
                         className="px-2.5 py-1 rounded-full text-xs"
-                        style={{ background: 'transparent', border: '1px solid rgba(184,160,212,0.3)', color: '#B8A0D4' }}
+                        style={{ background: 'transparent', border: '1px solid rgba(13,148,136,0.25)', color: '#0D9488' }}
                       >
                         {t}
                       </span>
@@ -324,13 +324,13 @@ export default function Home() {
                   <p className="text-brand-textSub text-xs truncate">{profile.bio}</p>
                 </div>
 
-                <div className="flex gap-2 px-4 py-3" style={{ borderTop: '1px solid rgba(184,160,212,0.1)' }}>
+                <div className="flex gap-2 px-4 py-3" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
                   {/* Replace button */}
                   <button
                     onClick={() => handleReplace(slot.key, slotIdx)}
                     disabled={!!replacingKey}
                     className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-semibold shrink-0 transition-all disabled:opacity-40 active:scale-95"
-                    style={{ border: '1px solid rgba(184,160,212,0.25)', color: '#9B8FB0', background: 'rgba(184,160,212,0.06)' }}
+                    style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#6B7280', background: 'rgba(0,0,0,0.04)' }}
                     title={`Replace this match for ${REPLACE_COST} credits`}
                   >
                     <RefreshCw size={12} className={isReplacing ? 'animate-spin' : ''} />
@@ -338,15 +338,15 @@ export default function Home() {
                   </button>
                   <button
                     onClick={() => navigate(`/profile/${profile.id}`)}
-                    className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white"
-                    style={{ border: '1px solid rgba(184,160,212,0.2)' }}
+                    className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-gray-900"
+                    style={{ border: '1px solid rgba(0,0,0,0.1)' }}
                   >
                     View Profile
                   </button>
                   <button
                     onClick={() => navigate('/messages')}
-                    className="flex-1 py-2.5 rounded-xl text-sm font-bold text-[#1C0B3A]"
-                    style={{ background: '#D4A843' }}
+                    className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white"
+                    style={{ background: '#0D9488' }}
                   >
                     Message
                   </button>
@@ -359,17 +359,17 @@ export default function Home() {
         {/* Credits info strip */}
         <div
           className="rounded-xl px-4 py-3 flex items-center gap-3"
-          style={{ background: 'rgba(212,168,67,0.06)', border: '1px solid rgba(212,168,67,0.15)' }}
+          style={{ background: 'rgba(13,148,136,0.06)', border: '1px solid rgba(13,148,136,0.1)' }}
         >
-          <Coins size={16} style={{ color: '#D4A843' }} className="shrink-0" />
+          <Coins size={16} style={{ color: '#0D9488' }} className="shrink-0" />
           <div className="flex-1 min-w-0">
-            <p className="text-white text-xs font-semibold">You have <span style={{ color: '#D4A843' }}>{credits} credits</span> remaining</p>
+            <p className="text-gray-900 text-xs font-semibold">You have <span style={{ color: '#0D9488' }}>{credits} credits</span> remaining</p>
             <p className="text-brand-textSub text-xs mt-0.5">Replace a match costs {REPLACE_COST} credits. Get more with Premium.</p>
           </div>
           <button
             onClick={() => navigate('/upgrade')}
             className="shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold"
-            style={{ background: 'rgba(212,168,67,0.15)', color: '#D4A843', border: '1px solid rgba(212,168,67,0.3)' }}
+            style={{ background: 'rgba(13,148,136,0.1)', color: '#0D9488', border: '1px solid rgba(13,148,136,0.25)' }}
           >
             Get more
           </button>
@@ -379,19 +379,19 @@ export default function Home() {
         <div className="relative rounded-2xl overflow-hidden" style={{ height: 200 }}>
           <div className="absolute inset-0 flex flex-col gap-3 p-4 opacity-20 blur-sm pointer-events-none">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-12 rounded-xl" style={{ background: 'rgba(255,255,255,0.06)' }} />
+              <div key={i} className="h-12 rounded-xl" style={{ background: 'rgba(0,0,0,0.05)' }} />
             ))}
           </div>
           <div
             className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6"
-            style={{ background: 'rgba(28,11,58,0.75)', backdropFilter: 'blur(4px)' }}
+            style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(4px)' }}
           >
             <Lock size={24} className="text-brand-lavender" />
-            <p className="text-white font-semibold text-sm text-center">Unlock unlimited matches with Premium</p>
+            <p className="text-gray-900 font-semibold text-sm text-center">Unlock unlimited matches with Premium</p>
             <button
               onClick={() => navigate('/upgrade')}
-              className="px-6 py-2.5 rounded-xl font-bold text-sm text-[#1C0B3A]"
-              style={{ background: '#D4A843' }}
+              className="px-6 py-2.5 rounded-xl font-bold text-sm text-white"
+              style={{ background: '#0D9488' }}
             >
               Upgrade now
             </button>
@@ -423,7 +423,7 @@ export default function Home() {
             />
             <motion.div
               className="fixed bottom-0 left-0 right-0 mx-auto max-w-[390px] z-40 rounded-t-2xl p-6"
-              style={{ background: '#1C0B3A', border: '1px solid rgba(184,160,212,0.15)' }}
+              style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)' }}
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
@@ -440,13 +440,13 @@ export default function Home() {
                   <X size={18} className="text-brand-textSub" />
                 </button>
               </div>
-              <p className="text-white text-sm leading-relaxed mb-4">
+              <p className="text-gray-900 text-sm leading-relaxed mb-4">
                 You have a date with Isabelle on Saturday at Brat, Shoreditch. Keep things light until then — one or two messages at most.
               </p>
               <button
                 onClick={() => { setShowCupid(false); navigate('/messages?thread=1') }}
-                className="w-full py-3 rounded-xl font-bold text-[#1C0B3A]"
-                style={{ background: '#D4A843' }}
+                className="w-full py-3 rounded-xl font-bold text-white"
+                style={{ background: '#0D9488' }}
               >
                 Get a conversation starter
               </button>

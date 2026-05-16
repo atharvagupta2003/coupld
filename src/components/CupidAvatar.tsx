@@ -14,7 +14,7 @@ export default function CupidAvatar({ size = 40, pulse = true }: Props) {
       {pulse && (
         <motion.div
           className="absolute inset-0 rounded-full"
-          style={{ background: 'rgba(184,160,212,0.2)' }}
+          style={{ background: 'rgba(13,148,136,0.2)' }}
           animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0, 0.4] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -23,7 +23,7 @@ export default function CupidAvatar({ size = 40, pulse = true }: Props) {
       {pulse && (
         <motion.div
           className="absolute inset-0 rounded-full"
-          style={{ background: 'rgba(212,168,67,0.12)' }}
+          style={{ background: 'rgba(13,148,136,0.12)' }}
           animate={{ scale: [1, 1.18, 1], opacity: [0.3, 0, 0.3] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
         />
@@ -34,8 +34,8 @@ export default function CupidAvatar({ size = 40, pulse = true }: Props) {
         style={{
           width: size,
           height: size,
-          background: 'linear-gradient(135deg, #B8A0D4 0%, #7B5EA7 50%, #2D1B4E 100%)',
-          boxShadow: '0 0 16px rgba(184,160,212,0.35)',
+          background: 'linear-gradient(135deg, #0D9488 0%, #0F766E 50%, #134E4A 100%)',
+          boxShadow: '0 0 16px rgba(13,148,136,0.35)',
         }}
         animate={pulse ? { scale: [1, 1.04, 1] } : {}}
         transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}

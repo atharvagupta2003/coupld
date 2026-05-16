@@ -16,7 +16,7 @@ export default function ExplicitSentWarning() {
 
   return (
     <motion.div
-      className="flex flex-col h-screen w-full bg-[#1C0B3A]"
+      className="flex flex-col h-screen w-full bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -24,10 +24,10 @@ export default function ExplicitSentWarning() {
       {/* Header */}
       <div
         className="flex items-center gap-3 px-4 py-3 shrink-0"
-        style={{ background: 'rgba(28,11,58,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.1)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
         <button onClick={() => navigate(-1)} className="pl-8">
-          <ChevronLeft size={22} className="text-white" />
+          <ChevronLeft size={22} className="text-gray-900" />
         </button>
         <img
           src="https://images.pexels.com/photos/7437171/pexels-photo-7437171.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=200"
@@ -35,7 +35,7 @@ export default function ExplicitSentWarning() {
           className="w-9 h-9 rounded-full object-cover"
         />
         <div className="flex-1">
-          <p className="text-white font-semibold text-sm">Isabelle</p>
+          <p className="text-gray-900 font-semibold text-sm">Isabelle</p>
           <p className="text-brand-textSub" style={{ fontSize: 11 }}>Active recently</p>
         </div>
       </div>
@@ -57,11 +57,11 @@ export default function ExplicitSentWarning() {
                   maxWidth: '78%',
                   padding: '10px 14px',
                   borderRadius: isUser ? '16px 4px 16px 16px' : '4px 16px 16px 16px',
-                  background: isUser ? '#2D1B4E' : 'rgba(184,160,212,0.10)',
-                  border: isUser ? 'none' : '1px solid rgba(184,160,212,0.15)',
+                  background: isUser ? '#0D9488' : 'rgba(0,0,0,0.04)',
+                  border: isUser ? 'none' : '1px solid rgba(0,0,0,0.08)',
                 }}
               >
-                <p className="text-white text-sm leading-relaxed">{msg.text}</p>
+                <p className={`${isUser ? 'text-white' : 'text-gray-900'} text-sm leading-relaxed`}>{msg.text}</p>
                 <p className="text-brand-textSub mt-1" style={{ fontSize: 10 }}>{msg.time}</p>
               </div>
             </motion.div>
@@ -120,7 +120,7 @@ export default function ExplicitSentWarning() {
               exit={{ opacity: 0, scale: 0.92 }}
               transition={{ type: 'spring', damping: 20 }}
             >
-              <div style={{ background: '#1E0D3C', border: '1px solid rgba(194,84,122,0.35)' }}>
+              <div style={{ background: '#FFFFFF', border: '1px solid rgba(194,84,122,0.35)' }}>
                 {/* Red header */}
                 <div
                   className="px-5 pt-6 pb-4 flex flex-col items-center text-center"
@@ -135,9 +135,9 @@ export default function ExplicitSentWarning() {
                   >
                     <ShieldAlert size={32} style={{ color: '#C2547A' }} />
                   </motion.div>
-                  <p className="text-white font-bold text-xl mb-2">Content Policy Warning</p>
-                  <p className="text-brand-textSub text-sm leading-relaxed">
-                    This is your <span className="text-white font-semibold">first warning</span>. Coupld detected content that may violate our Safe Space policy.
+                  <p className="text-gray-900 font-bold text-xl mb-2">Content Policy Warning</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    This is your <span className="text-gray-900 font-semibold">first warning</span>. Coupld detected content that may violate our Safe Space policy.
                   </p>
                 </div>
 
@@ -147,8 +147,8 @@ export default function ExplicitSentWarning() {
                     className="rounded-2xl p-4 mb-4"
                     style={{ background: 'rgba(194,84,122,0.07)', border: '1px solid rgba(194,84,122,0.2)' }}
                   >
-                    <p className="text-white font-semibold text-sm mb-1">What happened</p>
-                    <p className="text-brand-textSub text-xs leading-relaxed">
+                    <p className="text-gray-900 font-semibold text-sm mb-1">What happened</p>
+                    <p className="text-gray-500 text-xs leading-relaxed">
                       The image you attempted to send was flagged as potentially explicit. The message was blocked before delivery. Isabelle did not receive it.
                     </p>
                   </div>
@@ -164,19 +164,19 @@ export default function ExplicitSentWarning() {
                         key={step.num}
                         className="flex items-center gap-3 px-3 py-2 rounded-xl"
                         style={{
-                          background: step.active ? 'rgba(194,84,122,0.1)' : 'rgba(255,255,255,0.03)',
+                          background: step.active ? 'rgba(194,84,122,0.1)' : 'rgba(0,0,0,0.03)',
                           border: step.active ? '1px solid rgba(194,84,122,0.35)' : '1px solid transparent',
                         }}
                       >
                         <span
                           className="font-bold text-xs w-8 text-center shrink-0"
-                          style={{ color: step.active ? '#C2547A' : '#9B8FB0' }}
+                          style={{ color: step.active ? '#C2547A' : '#6B7280' }}
                         >
                           {step.num}
                         </span>
                         <span
                           className="text-xs"
-                          style={{ color: step.active ? 'white' : '#9B8FB0' }}
+                          style={{ color: step.active ? '#111827' : '#6B7280' }}
                         >
                           {step.label}
                         </span>
@@ -188,7 +188,7 @@ export default function ExplicitSentWarning() {
                   <button
                     onClick={() => setStage('acknowledged')}
                     className="w-full py-3.5 rounded-xl font-bold text-sm mb-3"
-                    style={{ background: 'rgba(184,160,212,0.12)', border: '1px solid rgba(184,160,212,0.3)', color: 'white' }}
+                    style={{ background: 'rgba(13,148,136,0.1)', border: '1px solid rgba(13,148,136,0.3)', color: '#0D9488' }}
                   >
                     I understand — dismiss
                   </button>
@@ -222,23 +222,23 @@ export default function ExplicitSentWarning() {
       {/* Input */}
       <div
         className="flex items-center gap-2 px-4 py-3 shrink-0"
-        style={{ background: 'rgba(28,11,58,0.97)', borderTop: '1px solid rgba(184,160,212,0.1)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', borderTop: '1px solid rgba(0,0,0,0.08)' }}
       >
         {/* Simulated attachment button that triggers the warning */}
         <button
           onClick={() => stage === 'chat' && setShowModal(true)}
           className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(184,160,212,0.18)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           <span className="text-brand-textSub text-lg">+</span>
         </button>
         <div
           className="flex-1 px-4 py-2.5 rounded-xl text-brand-textSub/50 text-sm"
-          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.12)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           Message Isabelle…
         </div>
-        <Send size={20} style={{ color: '#9B8FB0' }} className="shrink-0" />
+        <Send size={20} style={{ color: '#6B7280' }} className="shrink-0" />
       </div>
 
       {/* Trigger modal — simulate sending explicit image */}
@@ -248,14 +248,14 @@ export default function ExplicitSentWarning() {
             <motion.div className="fixed inset-0 z-20 bg-black/40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} />
             <motion.div
               className="fixed bottom-0 left-0 right-0 mx-auto max-w-[390px] z-30 rounded-t-3xl p-5"
-              style={{ background: '#1C0B3A', border: '1px solid rgba(184,160,212,0.15)' }}
+              style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)' }}
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 26 }}
             >
               <div className="flex items-center justify-between mb-4">
-                <p className="text-white font-semibold text-sm">Send photo</p>
+                <p className="text-gray-900 font-semibold text-sm">Send photo</p>
                 <button onClick={() => setShowModal(false)}><X size={18} className="text-brand-textSub" /></button>
               </div>
               <div className="grid grid-cols-3 gap-2 mb-4">
@@ -264,7 +264,7 @@ export default function ExplicitSentWarning() {
                     key={n}
                     onClick={() => { if (n === 3) { setShowModal(false); setStage('blocked') } }}
                     className="rounded-xl overflow-hidden cursor-pointer transition-all active:scale-95"
-                    style={{ height: 80, background: n === 3 ? 'rgba(194,84,122,0.2)' : 'rgba(255,255,255,0.05)', border: n === 3 ? '1.5px dashed rgba(194,84,122,0.5)' : '1px solid rgba(184,160,212,0.12)' }}
+                    style={{ height: 80, background: n === 3 ? 'rgba(194,84,122,0.2)' : 'rgba(0,0,0,0.04)', border: n === 3 ? '1.5px dashed rgba(194,84,122,0.5)' : '1px solid rgba(0,0,0,0.08)' }}
                   >
                     {n === 3 && (
                       <div className="w-full h-full flex flex-col items-center justify-center gap-1">

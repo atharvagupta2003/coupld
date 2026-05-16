@@ -37,7 +37,7 @@ export default function EveCharacter({ size = 120, speaking = false }: Props) {
           {/* Subtle gradient overlay at bottom */}
           <div
             className="absolute inset-x-0 bottom-0 h-1/3"
-            style={{ background: 'linear-gradient(to top, rgba(28,11,58,0.6), transparent)' }}
+            style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.3), transparent)' }}
           />
         </div>
       </motion.div>

@@ -91,7 +91,7 @@ export default function HowCoupldWorks() {
 
   return (
     <motion.div
-      className="flex flex-col min-h-screen w-full bg-[#1C0B3A] overflow-hidden"
+      className="flex flex-col min-h-screen w-full bg-white overflow-hidden"
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -30 }}
@@ -102,7 +102,7 @@ export default function HowCoupldWorks() {
         className="fixed inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(75,32,128,0.3) 0%, transparent 70%)',
+            'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(13,148,136,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -114,7 +114,7 @@ export default function HowCoupldWorks() {
               className="rounded-full"
               animate={{
                 width: i === current ? 24 : 6,
-                background: i === current ? '#B8A0D4' : 'rgba(184,160,212,0.25)',
+                background: i === current ? '#0D9488' : 'rgba(0,0,0,0.15)',
               }}
               transition={{ duration: 0.3 }}
               style={{ height: 6 }}
@@ -164,7 +164,7 @@ export default function HowCoupldWorks() {
             </div>
 
             {/* Title */}
-            <h1 className="text-white font-bold mb-4" style={{ fontSize: 26, lineHeight: 1.2 }}>
+            <h1 className="text-gray-900 font-bold mb-4" style={{ fontSize: 26, lineHeight: 1.2 }}>
               {slide.title.replace(slide.titleEm, '').trim()}{' '}
               <span style={{ color: slide.iconColor, fontStyle: 'italic' }}>{slide.titleEm}</span>
             </h1>
@@ -199,7 +199,7 @@ export default function HowCoupldWorks() {
         <button
           onClick={goNext}
           className="w-full py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-opacity active:scale-[0.98]"
-          style={{ background: '#D4A843', color: '#1C0B3A' }}
+          style={{ background: '#0D9488', color: 'white' }}
         >
           {isLast ? 'Meet your coach' : 'Next'}
           <ArrowRight size={16} />

@@ -15,7 +15,7 @@ const coaches = [
     description: 'Keeps it real. Calls things out gently when needed. Pushes you to show up as your best self.',
     voicePreview: "Hey. I'm Adam — your Coupld coach. Warm, direct, and genuinely invested in helping you find someone worth keeping. Let's get started.",
     accent: '#6BB5C4',
-    bg: 'linear-gradient(145deg, rgba(107,181,196,0.12) 0%, rgba(45,27,78,0.5) 100%)',
+    bg: 'linear-gradient(145deg, rgba(107,181,196,0.12) 0%, rgba(240,249,255,1) 100%)',
     border: 'rgba(107,181,196,0.3)',
   },
   {
@@ -25,7 +25,7 @@ const coaches = [
     description: 'Listens deeply. Helps you understand yourself better along the way. Patient and genuinely curious.',
     voicePreview: "Hi, I'm Eve — your Coupld coach. Intuitive, patient, and here to help you build something real. I'm excited to start this with you.",
     accent: '#C2547A',
-    bg: 'linear-gradient(145deg, rgba(194,84,122,0.12) 0%, rgba(45,27,78,0.5) 100%)',
+    bg: 'linear-gradient(145deg, rgba(194,84,122,0.12) 0%, rgba(255,241,245,1) 100%)',
     border: 'rgba(194,84,122,0.3)',
   },
 ]
@@ -60,7 +60,7 @@ export default function ChooseCoach() {
 
   return (
     <motion.div
-      className="flex flex-col min-h-screen w-full bg-[#1C0B3A] px-5 pt-12 pb-8"
+      className="flex flex-col min-h-screen w-full bg-white px-5 pt-12 pb-8"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -71,7 +71,7 @@ export default function ChooseCoach() {
         className="fixed inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(75,32,128,0.28) 0%, transparent 70%)',
+            'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(13,148,136,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -85,7 +85,7 @@ export default function ChooseCoach() {
         <p className="text-brand-lavender font-semibold uppercase tracking-widest mb-2" style={{ fontSize: 11 }}>
           Your Dating Coach
         </p>
-        <h1 className="text-white font-bold text-2xl mb-2">Choose who guides you</h1>
+        <h1 className="text-gray-900 font-bold text-2xl mb-2">Choose who guides you</h1>
         <p className="text-brand-textSub text-sm">
           Your coach knows your profile and stays with you throughout your journey.
         </p>
@@ -125,7 +125,7 @@ export default function ChooseCoach() {
                 <div className="flex-1 min-w-0 pt-1">
                   <div className="flex items-center justify-between mb-1">
                     <div>
-                      <h3 className="text-white font-bold text-lg leading-none">{coach.name}</h3>
+                      <h3 className="text-gray-900 font-bold text-lg leading-none">{coach.name}</h3>
                       <p className="font-medium mt-0.5" style={{ fontSize: 12, color: coach.accent }}>
                         {coach.tagline}
                       </p>
@@ -175,8 +175,8 @@ export default function ChooseCoach() {
           disabled={!selected}
           className="w-full py-4 rounded-xl font-bold text-sm transition-all active:scale-[0.98] disabled:cursor-not-allowed"
           style={{
-            background: selected ? '#D4A843' : 'rgba(255,255,255,0.08)',
-            color: selected ? '#1C0B3A' : '#9B8FB0',
+            background: selected ? '#0D9488' : 'rgba(0,0,0,0.05)',
+            color: selected ? 'white' : '#6B7280',
           }}
         >
           {selected

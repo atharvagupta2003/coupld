@@ -23,7 +23,7 @@ export default function CoachPage() {
 
   return (
     <motion.div
-      className="flex flex-col h-screen w-full bg-[#1C0B3A]"
+      className="flex flex-col h-screen w-full bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -32,12 +32,12 @@ export default function CoachPage() {
       <div
         className="flex items-center gap-3 px-4 py-3 shrink-0"
         style={{
-          background: 'rgba(28,11,58,0.97)',
+          background: 'rgba(255,255,255,0.97)',
           backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(184,160,212,0.12)',
+          borderBottom: '1px solid rgba(0,0,0,0.08)',
         }}
       >
-        <button onClick={() => navigate(-1)} className="text-white pl-8">
+        <button onClick={() => navigate(-1)} className="text-gray-900 pl-8">
           <ChevronLeft size={22} />
         </button>
 
@@ -51,7 +51,7 @@ export default function CoachPage() {
 
         <div className="flex-1">
           <div className="flex items-center gap-1.5">
-            <p className="text-white font-semibold text-sm">{coachName}</p>
+            <p className="text-gray-900 font-semibold text-sm">{coachName}</p>
             <Sparkles size={11} style={{ color: '#D4A843' }} />
           </div>
           <p className="text-brand-textSub text-xs">Your AI relationship coach</p>
@@ -62,7 +62,7 @@ export default function CoachPage() {
       <div className="flex-1 overflow-y-auto px-4 py-5 flex flex-col gap-3">
         <div
           className="self-center px-4 py-1.5 rounded-full text-xs text-brand-textSub mb-2"
-          style={{ background: 'rgba(184,160,212,0.08)', border: '1px solid rgba(184,160,212,0.12)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           3 days ago
         </div>
@@ -101,10 +101,10 @@ export default function CoachPage() {
                   padding: '10px 14px',
                   borderRadius: isCoach ? '4px 16px 16px 16px' : '16px 4px 16px 16px',
                   background: isCoach
-                    ? 'linear-gradient(135deg, rgba(212,168,67,0.12), rgba(184,160,212,0.08))'
-                    : '#2D1B4E',
-                  border: isCoach ? '1px solid rgba(212,168,67,0.2)' : 'none',
-                  color: 'white',
+                    ? 'rgba(0,0,0,0.04)'
+                    : '#0D9488',
+                  border: isCoach ? '1px solid rgba(0,0,0,0.08)' : 'none',
+                  color: isCoach ? '#111827' : 'white',
                 }}
               >
                 {msg.text}
@@ -119,19 +119,19 @@ export default function CoachPage() {
       {/* Input bar — decorative / non-functional for prototype */}
       <div
         className="px-4 py-3 shrink-0 flex items-center gap-3"
-        style={{ background: 'rgba(28,11,58,0.97)', borderTop: '1px solid rgba(184,160,212,0.1)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', borderTop: '1px solid rgba(0,0,0,0.08)' }}
       >
         <div
           className="flex-1 px-4 py-2.5 rounded-xl text-brand-textSub/50 text-sm"
-          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.12)' }}
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         >
           Ask {coachName} anything…
         </div>
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
-          style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.25)' }}
+          style={{ background: 'rgba(13,148,136,0.12)', border: '1px solid rgba(13,148,136,0.25)' }}
         >
-          <Sparkles size={15} style={{ color: '#D4A843' }} />
+          <Sparkles size={15} style={{ color: '#0D9488' }} />
         </div>
       </div>
     </motion.div>

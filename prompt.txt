@@ -1,0 +1,942 @@
+You are building a high-fidelity, interactive web prototype for "Coupld" — an AI-powered 
+ethical dating app. This is a proof-of-concept mock with realistic, beautiful UI. 
+All data is mocked with realistic dummy content. No backend required.
+
+=============================================================================
+CRITICAL RULES — READ BEFORE WRITING ANY CODE
+=============================================================================
+
+- Zero emojis anywhere in the entire codebase — not in UI, copy, comments, or data
+- Nothing should feel like AI or a chatbot — Cupid speaks like a warm, intelligent 
+  human friend who happens to be very good at this
+- Use shadcn/ui for all base components
+- Use magic-ui for premium animations
+- Use pexels MCP server to fetch all real photography — no placeholder boxes ever
+- Use firecrawl-mcp to scrape https://hinge.co and https://bumble.com for UI reference
+- Use playwright MCP to screenshot and verify each screen after build
+- Every screen must be reachable — no dead ends
+- Prototype must run at 390px width (mobile), centered in browser with dark outer bg
+- Run npm run dev and confirm zero console errors before finishing
+
+=============================================================================
+TECH STACK
+=============================================================================
+
+- React + Vite + TypeScript
+- Tailwind CSS (extend config with brand tokens below)
+- shadcn/ui — install: Button, Card, Badge, Input, Textarea, Dialog, Sheet, 
+  Tabs, Progress, Avatar, Separator, Toast, Drawer
+- Framer Motion — all transitions and micro-animations
+- Lucide React — all icons (no emojis as icon substitutes)
+- canvas-confetti — exclusive/relationship celebration screen
+- React Router v6 — all navigation
+- All mock data in /src/data/mockData.ts
+
+Tailwind brand token extensions:
+  colors: {
+    brand: {
+      bg:       '#1C0B3A',
+      primary:  '#2D1B4E',
+      lavender: '#B8A0D4',
+      rose:     '#C2547A',
+      gold:     '#D4A843',
+      card:     'rgba(255,255,255,0.04)',
+      border:   'rgba(184,160,212,0.15)',
+      textSub:  '#9B8FB0',
+    }
+  }
+
+=============================================================================
+PEXELS MCP — FETCH THESE ASSETS FIRST
+=============================================================================
+
+Before writing any component code, use the pexels MCP server to fetch image URLs 
+for the following searches. Store all URLs in mockData.ts.
+
+Profile photos (fetch 1 photo each):
+  1. "portrait young woman natural light candid"
+  2. "portrait young man smiling outdoor"
+  3. "woman confident lifestyle portrait"
+  4. "man laughing coffee shop natural"
+  5. "woman outdoor golden hour portrait"
+
+Additional profile photos for galleries (2 extras per person):
+  6. "woman hiking nature"
+  7. "man cooking kitchen lifestyle"
+  8. "woman reading cafe window"
+  9. "man gym lifestyle"
+  10. "woman city street fashion"
+
+Date venue photos:
+  11. "romantic restaurant evening candles"
+  12. "rooftop bar city view night"
+  13. "wine bar cozy interior"
+  14. "couple hiking mountain trail"
+
+Onboarding/background:
+  15. "abstract purple bokeh dark background"
+
+=============================================================================
+BRAND & DESIGN IDENTITY
+=============================================================================
+
+App name: Coupld
+Tagline: "The app you won't delete."
+Sub-tagline: "Get Coupld. Stay Coupld."
+Brand voice: Warm. Direct. Confident. Never clinical. Never robotic. Human.
+
+Design language:
+  - Dark-first. Deep purple gradients throughout (#1C0B3A base)
+  - Glassmorphism cards: backdrop-blur-md, bg brand-card, border brand-border
+  - Soft lavender glow behind key interactive elements (box-shadow: 0 0 40px rgba(184,160,212,0.15))
+  - Border radius: 16px minimum on all cards, 12px on buttons
+  - Mobile-first: 390px max-width, centered, dark (#0D0618) outer background
+  - Typography: Plus Jakarta Sans (import from Google Fonts)
+    Display: font-weight 700, tracking-tight
+    Body: font-weight 400/500, leading-relaxed
+    Labels: font-weight 600, uppercase, tracking-widest, text-xs
+  - All screen transitions: Framer Motion AnimatePresence, slide-up or fade
+  - Every screen should feel like a premium consumer app
+
+=============================================================================
+ROUTING STRUCTURE
+=============================================================================
+
+/                     Splash screen (Login / Sign Up choice)
+/login                Login — loads pre-made profile, goes straight to /home
+/signup               Sign Up entry point — starts the flow
+/signup/verify        Age verification
+/signup/onboarding    Voice-style onboarding chat with Cupid
+/home                 Matches feed
+/profile/:id          Individual profile view
+/messages             Chat list + open thread
+/feedback             Post-date feedback
+/exclusive            Relationship mode / stop charging
+/badges               Journey and milestones
+/upgrade              Premium tier comparison
+/settings             Basic profile settings (optional, linked from nav)
+
+=============================================================================
+SCREEN 1 — SPLASH  Route: /
+=============================================================================
+
+Full-screen dark background.
+Use magic-ui AuroraBackground or AnimatedGradient component — 
+deep purple, violet, and dark indigo tones only. Slow movement, subtle.
+
+Layout (vertically centered):
+  - "Coupld" wordmark — Plus Jakarta Sans, 700, 52px, white, letter-spacing -1px
+  - Below (16px gap): "The app you won't delete." — lavender (#B8A0D4), 18px, italic
+  - 48px gap
+  - Two buttons, full width, stacked (8px gap):
+      Primary: "Create an Account" — bg #D4A843, text #1C0B3A, font-weight 700
+      Ghost:   "Sign In" — border border-brand-lavender, text white, bg transparent
+  - Bottom of screen: "By continuing you agree to our Terms and Privacy Policy" 
+    secondary text, 11px, centered
+
+No other elements. Let the background carry the screen.
+
+Animation: wordmark and buttons fade + slide up on mount (staggered, Framer Motion).
+
+=============================================================================
+SCREEN 2 — LOGIN  Route: /login
+=============================================================================
+
+This simulates logging in as a pre-existing user. No real auth needed.
+
+Layout — centered card (glassmorphism):
+  - Back arrow top left (Lucide ChevronLeft)
+  - Label: "WELCOME BACK" — uppercase, lavender, tracking-widest, xs
+  - Heading: "Sign in to Coupld"
+  - Two shadcn Input fields:
+      Email — prefilled with "alex@example.com" (read-only, styled)
+      Password — prefilled with dots (read-only, styled)
+  - CTA: "Sign In" — gold button, full width
+    On click: brief loading spinner (800ms), then navigate to /home 
+    with a slide-up transition — loads the pre-made Alex profile
+  - Divider: "or"
+  - Text link: "Don't have an account? Create one" → /signup
+
+No actual validation. Just simulate the action.
+
+=============================================================================
+SCREEN 3 — SIGN UP ENTRY  Route: /signup
+=============================================================================
+
+Similar layout to login card.
+
+  - Back arrow top left
+  - Label: "GET STARTED"
+  - Heading: "Create your account"
+  - Subtext: "Takes about five minutes. Every answer improves your matches."
+  - Three shadcn Input fields:
+      Full name
+      Email address
+      Password
+  - CTA: "Continue" — gold, full width → navigates to /signup/verify
+  - Divider: "or"
+  - Text link: "Already have an account? Sign in" → /login
+
+IMPORTANT — Persistent skip button for prototype demo:
+  Fixed top-right corner across ALL /signup/* routes:
+  A small pill button — bg rgba(255,255,255,0.08), text white, 
+  border rgba(255,255,255,0.12), text "Skip to app", font-size 12px
+  On click: navigate directly to /home (loads pre-made profile)
+  This persists on /signup, /signup/verify, and /signup/onboarding
+  It should never be intrusive — small, always accessible
+
+=============================================================================
+SCREEN 4 — AGE VERIFICATION  Route: /signup/verify
+=============================================================================
+
+Centered glassmorphism card. Skip button persists top-right.
+
+  - Progress indicator: "Step 1 of 2" — label style, lavender
+  - Heading: "Let's make sure you're you."
+  - Subtext: "We verify your age once to keep Coupld safe for everyone. 
+    Your ID is never stored after this step."
+  
+  Two upload zones (stacked, 12px gap):
+    Zone 1 — dashed border card, Lucide CreditCard icon (24px, lavender):
+      Primary text: "Upload a photo ID"
+      Secondary text: "Passport, driving licence, or national ID"
+      On click: simulate upload — after 600ms show Lucide CheckCircle in green, 
+      text changes to "ID uploaded"
+    
+    Zone 2 — dashed border card, Lucide Camera icon:
+      Primary text: "Take a quick selfie"
+      Secondary text: "We match your face to your ID to confirm it is you"
+      On click: simulate capture — same check animation
+
+  CTA: "Verify and Continue" — gold, full width → /signup/onboarding
+    (enabled immediately — do not gate on upload completion, it is a prototype)
+  
+  Small text link below: "Why do we verify? Learn more"
+
+=============================================================================
+SCREEN 5 — VOICE ONBOARDING  Route: /signup/onboarding
+=============================================================================
+
+Single screen. Feels exactly like an iMessage or WhatsApp thread with a real person.
+This completely replaces all forms, sliders, progress steps, and input fields.
+Skip button persists top-right.
+
+--- LAYOUT ---
+
+Top bar (sticky, dark bg with blur):
+  Left: Lucide ChevronLeft (back)
+  Center: 
+    Avatar — 36px circle, lavender gradient fill (#B8A0D4 → #2D1B4E), 
+    white "C" monogram, 14px bold
+    Right of avatar: 
+      "Cupid" — white, 15px, font-weight 600
+      "Available now" — brand-textSub, 12px
+  Right: Lucide VolumeX icon (decorative, muted — suggests voice capability)
+
+Scrollable message area:
+  padding: 16px, padding-bottom: 120px (space for input bar)
+  Auto-scrolls to bottom on each new message
+
+Bottom input bar (sticky, fixed bottom):
+  Background: #1C0B3A with top border brand-border, backdrop-blur
+  Layout:
+    Top: horizontally scrollable quick-reply chip row
+      Chips: shadcn Badge variant outline, lavender border, white text, 
+      px-4 py-2, rounded-full, cursor-pointer
+      On tap: chip fills lavender bg (#B8A0D4), text becomes #1C0B3A
+      chips update after each Cupid message
+    Bottom: centered Lucide Mic icon button
+      64px circle, bg lavender gradient, white icon
+      Press state: outer ring expands and fades (Framer Motion keyframes)
+      Simulates voice — on press triggers the next hardcoded user response
+
+--- BUBBLE STYLES ---
+
+Cupid bubbles (left-aligned):
+  bg: rgba(184,160,212,0.10)
+  border: 1px solid rgba(184,160,212,0.18)
+  border-radius: 4px 16px 16px 16px
+  padding: 12px 16px
+  max-width: 82%
+  font-size: 14px, line-height 22px, color white
+  Entry animation: fade + slide from left (Framer Motion, spring)
+
+User bubbles (right-aligned):
+  bg: #2D1B4E
+  border: none
+  border-radius: 16px 4px 16px 16px
+  padding: 12px 16px
+  max-width: 75%
+  font-size: 14px, color white
+  Entry animation: fade + slide from right
+
+Typing indicator (shows before each Cupid message, 700ms):
+  Left-aligned, same bubble style as Cupid
+  Three dots — not bouncing, instead: sequential fade in/out, 300ms stagger
+  Disappears when message appears
+
+--- FULL CONVERSATION SCRIPT ---
+
+Simulate all delays in code. Each Cupid message:
+  1. Show typing indicator (700ms)
+  2. Remove indicator
+  3. Show message bubble (spring animation)
+  4. Update chips below
+
+Auto-advance when user taps a chip or presses mic button.
+Selected chip becomes a user bubble on the right.
+
+---
+
+[MESSAGE 1 — OPENER]
+Cupid: "Good to meet you. I'm Cupid — your dating coach here on Coupld.
+
+I'm going to ask you a few questions so I actually understand who you are, 
+not just what you look like. This takes about five minutes and it's what 
+makes your matches significantly better than anywhere else."
+
+Chips: ["Sounds good", "How does this work exactly?", "Let's get into it"]
+
+If "How does this work exactly?":
+Cupid: "Instead of you filling out a form, I ask questions — 
+the same ones I would ask a close friend setting you up. 
+The answers shape who I show you. Ready?"
+Chips: ["Yes, let's go", "Makes sense, continue"]
+
+---
+
+[MESSAGE 2 — NAME AND LOCATION]
+Cupid: "What's your name, and where are you based?"
+
+Chips: ["Alex, London", "Jordan, Sydney", "Sam, Melbourne", "Enter manually"]
+
+Cupid (after any selection, using their name): 
+"Good to meet you, Alex. 
+A lot of people in London — finding the right ones is a different matter."
+
+---
+
+[MESSAGE 3 — INTENT]
+Cupid: "What are you actually looking for right now? 
+You can be straight with me — I'm not going to judge you for the answer."
+
+Chips: [
+  "Something serious and long-term",
+  "Open to wherever it goes",
+  "Casual to start and see"
+]
+
+Cupid responses:
+  If serious: "That is the majority of people here, for what it is worth — 
+               though not everyone leads with it."
+  If casual:  "Completely fine. I will find you people who are on the same page 
+               about that."
+  If open:    "Honest answer. I will show you people across the spectrum 
+               and let you decide."
+
+---
+
+[MESSAGE 4 — PERSONALITY]
+Cupid: "Tell me about your general energy. On a typical Friday evening, 
+what are you actually doing — not what sounds good, what you are genuinely doing."
+
+Chips: [
+  "Out with friends, somewhere with people",
+  "Small dinner, people I actually know well",
+  "Home. Genuinely happy about it.",
+  "Entirely depends on the week"
+]
+
+Cupid: "That tracks. And when something actually goes wrong — 
+not small stuff, something that genuinely affects you — 
+how do you usually handle it?"
+
+Chips: [
+  "I need to talk it through with someone",
+  "I go quiet and work it out alone",
+  "I stay busy and push through",
+  "Mix of things depending on the situation"
+]
+
+---
+
+[MESSAGE 5 — VALUES]
+Cupid: "Kids — do you want them, already have them, or is it a firm no for you?"
+
+Chips: [
+  "I want them eventually",
+  "I already have children",
+  "I am open, not fully decided",
+  "Not for me"
+]
+
+Cupid: "Got it. Does it matter to you whether a partner shares your faith 
+or cultural background?"
+
+Chips: [
+  "It matters a lot to me",
+  "Preferred but not a dealbreaker",
+  "Not particularly, no",
+  "I care more about shared values than background"
+]
+
+---
+
+[MESSAGE 6 — LIFESTYLE]
+Cupid: "Quick one on lifestyle. How would your closest friend 
+describe your daily energy honestly?"
+
+Chips: [
+  "Always moving, gym most days",
+  "Active when the schedule allows",
+  "More about food and experiences than fitness",
+  "Working on it"
+]
+
+Cupid: "And drink or smoke — do you, and does it matter to you 
+whether a partner does?"
+
+Chips: [
+  "I drink socially, fine if they do too",
+  "I drink, would prefer they do not smoke",
+  "I do not drink — would prefer the same",
+  "Neither, and that matters to me"
+]
+
+---
+
+[MESSAGE 7 — EMOTIONAL NEEDS]
+Cupid: "What actually makes you feel cared for in a relationship — 
+not the version that sounds good, the real one."
+
+Chips: [
+  "When someone tells me directly",
+  "Quality time and full attention",
+  "Consistent small gestures",
+  "Physical closeness",
+  "When they remember the details"
+]
+
+Cupid: "Last one on this. Do you tend to fall into things fast 
+when you like someone, or do you take time before you open up?"
+
+Chips: [
+  "I fall fast if I like someone",
+  "I take a while to trust people",
+  "Somewhere in between",
+  "Entirely depends on the person"
+]
+
+---
+
+[MESSAGE 8 — ORIENTATION]
+Cupid: "I want to make sure I only ever show you people 
+you would actually be interested in. What is your orientation?"
+
+Chips: ["Straight", "Gay or Lesbian", "Bisexual", "Pansexual", "Prefer not to say"]
+
+Cupid: "Saved. Fully private — only ever used to filter your matches, 
+nothing else. Are you monogamous, or open to other relationship structures?"
+
+Chips: [
+  "Monogamous",
+  "Open to ethical non-monogamy",
+  "Not sure — open to the conversation"
+]
+
+---
+
+[MESSAGE 9 — PHOTOS]
+Cupid: "Last thing. I need a few photos — not posed headshots, 
+just you being yourself. Profiles with three or more photos 
+get significantly more connections."
+
+Render inline photo upload grid inside Cupid's bubble area:
+  Three rounded cards in a row, each 100px x 120px:
+    Empty state: Lucide Plus icon (lavender, 20px), small text "Add photo" below
+    Filled state: Pexels portrait photo from mockData fills the card, 
+                  small Lucide X top-right to remove
+  On tap: simulate upload — 400ms loader then show Pexels photo
+
+After at least 1 photo added, Cupid sends after 1500ms:
+"That is everything I need. Give me a moment while I build your profile."
+
+---
+
+[TRANSITION STATE]
+Chat area fades to a loading state:
+  Cupid avatar centered, larger (56px)
+  Below: magic-ui TextReveal or staggered fade cycling through:
+    "Reading your profile..."     (1.5s)
+    "Mapping your values..."      (1.5s)
+    "Shortlisting your matches..."(1.5s)
+  
+  After 4.5s total: Framer Motion slide-up transition → /home
+
+---
+
+=============================================================================
+SCREEN 6 — HOME / MATCHES  Route: /home
+=============================================================================
+
+This is the core screen. NOT a swipe interface. Curated daily stack.
+
+Top bar (sticky):
+  Left: "Coupld" wordmark — white, 18px, 700
+  Right: Lucide Bell icon + shadcn Badge gold variant: "42 credits"
+
+Section header:
+  "Today's Matches" — white, 22px, 700
+  "5 curated for you. Refreshes in 14 hours." — brand-textSub, 13px
+
+5 profile cards (vertical scroll, 16px gap between cards):
+  Each card — shadcn Card, glassmorphism style:
+    Top: Pexels photo, full width, 280px height, object-cover, rounded-t-2xl
+         Absolute top-right: compatibility badge "94% match" — 
+         bg rgba(212,168,67,0.15), border gold, text gold, text-xs, 
+         font-weight 700, px-2 py-1, rounded-full
+    Body (16px padding):
+      Row 1: Name + age bold white 18px | city secondary 13px right-aligned
+      Row 2: 3 trait chips — shadcn Badge ghost variant, 
+             bg transparent, border rgba(184,160,212,0.3), text brand-lavender
+             e.g. "Values-aligned" "Adventurous" "Emotionally available"
+      Row 3: Bio snippet — 1 line, brand-textSub, 13px, truncated
+    Footer (12px padding, border-top brand-border):
+      Two buttons full width side by side:
+        "View Profile" — ghost, border brand-border
+        "Send a Message" — bg gold, text dark
+
+Below 5 cards:
+  Blurred locked section:
+    4 dimmed card outlines (opacity 30%, blur-sm)
+    Lucide Lock icon overlay centered, lavender
+    Text: "4 more matches available"
+    Upgrade card: dark glassmorphism, gold left border, 
+    "Unlock with Premium" text, "Upgrade now" link-style CTA → /upgrade
+
+Fixed bottom: Cupid floating button
+  56px circle, bg lavender gradient, Lucide MessageCircle icon white
+  Position: bottom-24 right-4 (above nav bar)
+  Framer Motion: scale 1 → 1.04 → 1 loop, 3s duration
+  On tap: Framer Motion slide-up sheet showing:
+    "FROM YOUR COACH" label
+    "You have not messaged Isabelle yet. It has been 24 hours since you matched."
+    CTA: "Get a conversation starter" → /messages
+
+=============================================================================
+SCREEN 7 — PROFILE VIEW  Route: /profile/:id
+=============================================================================
+
+Full scroll. Back arrow top left (Lucide ChevronLeft, white).
+
+Hero:
+  Pexels photo full-width, 360px, object-cover
+  Gradient overlay bottom 40%: transparent → #1C0B3A
+  Overlaid text bottom-left:
+    Name + age — white, 28px, 700
+    City — brand-lavender, 14px
+  Top-right: shadcn Badge — Lucide CheckCircle icon + "Verified" — 
+  small, lavender bg tinted
+
+Photo gallery: horizontal scroll, 3 Pexels photos, 
+  110px height, 90px width each, rounded-xl, object-cover, gap-2
+
+Compatibility section:
+  Heading: "Compatibility" — white, 18px, 700
+  Large circular score — magic-ui animated number counter 0 → 94 on mount
+    Circle: conic-gradient gold fill, dark track
+    Center: "94%" white 28px bold
+  
+  8 dimension bars (shadcn Progress, animate width 0 → value on mount, 0.8s stagger):
+    Values / Personality / Lifestyle / Emotional / Attachment / Social / Intent / Aesthetic
+    Each: label left, percentage right, progress bar below
+
+Cupid's Take card:
+  bg rgba(212,168,67,0.06), border rgba(212,168,67,0.2), rounded-2xl, p-4
+  Label: "FROM YOUR COACH" — gold, uppercase, tracking-widest, text-xs
+  Text: coach note from mockData, white 14px, line-height relaxed
+
+Two CTA buttons (full width, stacked, 8px gap):
+  "Start a Conversation" — gold bg, dark text, font-weight 700
+  "Book This Match" — bg rgba(184,160,212,0.1), border brand-lavender, 
+  white text, below: "Uses 1 credit · 42 remaining" brand-textSub text-xs center
+
+=============================================================================
+SCREEN 8 — MESSAGES  Route: /messages
+=============================================================================
+
+Two states: list view and open conversation.
+Use tabs or back navigation to toggle between them.
+
+--- CHAT LIST ---
+  3 conversations from mockData:
+    Each row: Avatar (Pexels photo, 48px circle) | Name bold + last message 
+    truncated | time ago right | unread indicator (8px lavender dot, no number)
+    Tap row → open conversation
+
+--- OPEN CONVERSATION (e.g. Isabelle) ---
+
+Top bar:
+  Back arrow | Avatar + "Isabelle, 29" | Lucide MoreVertical
+
+Cupid suggestion card (pinned above message thread, NOT a notification):
+  bg rgba(184,160,212,0.06), left border 2px solid #B8A0D4, rounded-xl, p-3
+  Label: "FROM YOUR COACH" — lavender, uppercase, tracking-widest, text-xs
+  Text: coach suggestion from mockData
+  Right-aligned text links: "Use this" (gold) | "Dismiss" (brand-textSub)
+
+Message thread (scrollable):
+  5-6 mock messages loaded from mockData
+  Them: left, glassmorphism bubble
+  User: right, brand-primary bubble
+  Timestamps between message groups: centered, brand-textSub, text-xs
+
+Message input bar (sticky bottom):
+  Dark bg, border-top brand-border, backdrop-blur
+  Row: Rounded input (bg rgba(255,255,255,0.05), border brand-border) | 
+       Lucide Mic icon | Lucide Send icon (gold)
+
+Date planning widget — above input bar (tappable):
+  Collapsed state: small card "Plan a date with Isabelle" + Lucide Calendar icon
+  Expanded state (Framer Motion height animation):
+    Pexels venue photo (120px, full width, rounded)
+    Venue name + type
+    Date/time mock selector (two shadcn-styled pill selectors: date | time)
+    CTA: "Suggest to Isabelle" — gold, full width
+
+=============================================================================
+SCREEN 9 — DATE FEEDBACK  Route: /feedback
+=============================================================================
+
+No form feel. Clean card layout.
+
+Header:
+  "How did it go?" — white, 26px, 700
+  "With Isabelle — Saturday evening" — brand-textSub, 14px
+
+Five selection cards (2+2+1 grid or full-width stack):
+  Each card — glassmorphism, rounded-2xl, p-4, cursor-pointer
+  Selected state: border gold, bg rgba(212,168,67,0.06)
+  Not selected: border brand-border
+  Framer Motion: scale 0.98 → 1 on select (spring)
+  
+  Cards:
+    "It went really well"
+    "Okay, nothing special"
+    "Not a great fit"
+    "I want to see them again"
+    "We decided to be exclusive" — gold border default, slightly larger
+
+Optional textarea (shadcn Textarea):
+  bg rgba(255,255,255,0.04), border brand-border
+  placeholder: "Tell your coach what happened. This helps with future matches."
+  4 rows
+
+Three outcome path cards (horizontal scroll or stacked):
+  "Plan another date" — lavender card
+  "Try someone new" — neutral card  
+  "We are exclusive" — gold card, label above: "STOP BILLING" 
+    brand-lavender, uppercase, tracking-widest, text-xs
+
+CTA: "Submit" — gold, full width
+  On click: navigate to /exclusive if "We are exclusive" selected, 
+  otherwise /home with toast "Your coach has been updated."
+
+=============================================================================
+SCREEN 10 — EXCLUSIVE / RELATIONSHIP MODE  Route: /exclusive
+=============================================================================
+
+canvas-confetti fires immediately on mount:
+  particleCount: 120, spread: 80
+  colors: ['#D4A843', '#B8A0D4', '#C2547A', '#FFFFFF']
+
+No bottom nav on this screen. Full screen moment.
+
+Layout (vertically centered, full screen):
+  magic-ui TextReveal or staggered Framer Motion reveals:
+    Line 1: "You did it." — white, 42px, 700, delay 0.2s
+    Line 2: "Billing has stopped." — brand-lavender, 28px, 500, delay 0.6s
+  
+  Subtext (delay 1s): 
+    "You found what you came for. From here, Coupld supports 
+    your relationship — not your screen time."
+    brand-textSub, 15px, centered, max-width 300px
+
+  Separator (brand-border, delay 1.2s)
+
+  Section heading: "What happens next" — white, 16px, 600, delay 1.4s
+
+  Three cards (stacked, 12px gap, delay 1.6s stagger):
+    Card 1 — "Relationship Support"
+      Pexels romantic lifestyle image (140px, rounded-xl, full width, object-cover)
+      Title: "Relationship Support" — white 16px 600
+      Subtitle: "Date ideas, conversation starters, and couple milestones"
+    
+    Card 2 — "Your Coach Is Still Here"
+      bg rgba(184,160,212,0.08), border brand-border, no image
+      Title: "Cupid is still available"
+      Subtitle: "Now focused on your relationship, not finding you matches"
+    
+    Card 3 — "Partner Offers"
+      Pexels restaurant image (same dimensions)
+      Title: "Exclusive Partner Offers"
+      Subtitle: "Restaurants, experiences, and gifts curated for couples"
+
+  Two text links (bottom, delay 2s):
+    "Share your story" — brand-lavender (navigates to /home)
+    "Back to home" — brand-textSub
+
+=============================================================================
+SCREEN 11 — BADGES  Route: /badges
+=============================================================================
+
+Header:
+  "Your Journey" — white, 22px, 700
+  "Milestones you have earned and what comes next." — brand-textSub, 13px
+
+Badge grid: 2 columns, gap-3
+
+Each badge — shadcn Card, glassmorphism:
+  Center: Lucide icon (32px, lavender if unlocked, brand-textSub if locked)
+  Title: 14px, 600, white (unlocked) or brand-textSub (locked)
+  Description: 12px, brand-textSub, 2 lines max
+
+Unlocked badges (full opacity, subtle lavender glow: box-shadow 0 0 20px rgba(184,160,212,0.12)):
+  Lucide MessageCircle — "First Conversation" — "You sent your first message."
+  Lucide Star — "First Match" — "You accessed your first match."
+  Lucide CalendarCheck — "First Date" — "You went on your first date."
+  Lucide ClipboardCheck — "First Review" — "You gave your first date feedback."
+
+Locked badges (opacity-40, Lucide Lock icon overlay top-right, 14px):
+  Lucide Crown — "Platinum Member" — "Upgrade to Platinum to unlock."
+  Lucide Heart — "The One" — "Declare an exclusive relationship."
+  Lucide Ring — "Engaged" — "Report an engagement milestone."
+  Lucide Star — "Married" — "Report a marriage milestone."
+
+Progress section (bottom):
+  "Your progress" — white 14px 600
+  shadcn Progress — value 60, lavender fill, animated on mount
+  "60% through your journey" — brand-textSub, 12px, right-aligned
+
+=============================================================================
+SCREEN 12 — UPGRADE  Route: /upgrade
+=============================================================================
+
+Header:
+  "Choose Your Plan" — white, 22px, 700
+  "Your billing stops the moment you go exclusive. No questions asked." 
+  brand-textSub, 13px
+
+Three tier cards (stacked, 12px gap):
+  All: shadcn Card, glassmorphism, rounded-2xl, p-5
+
+  Free card:
+    Tier label: "FREE" — brand-textSub, uppercase, tracking-widest, xs
+    Price: "0" + "/month" — white 32px 700
+    Feature list (Lucide Check icons, brand-textSub):
+      3 daily matches
+      Basic coach nudges
+      1 match swap per day
+      Compatibility score hidden
+      10 matching credits to start
+
+  Premium card (visually elevated):
+    Top ribbon: "MOST POPULAR" — bg gold, text dark, uppercase, tracking-wider, 
+    text-xs, centered, rounded-t-2xl negative margin, -mt-5 -mx-5 mb-4
+    border: 1px solid #D4A843, subtle gold glow
+    Tier label: "PREMIUM" — gold, uppercase, tracking-widest, xs
+    Price: "19.99" + "/month" — white 32px 700
+    Feature list (Lucide Check icons, white):
+      5 daily matches
+      Full coach — icebreakers and date suggestions
+      3 match swaps per day
+      Compatibility score visible
+      50 credits per month included
+      2 profile boosts per month
+    CTA: "Start Free Trial" — gold bg, dark text, full width, font-weight 700
+
+  Platinum card:
+    border: 1px solid rgba(184,160,212,0.4)
+    Tier label: "PLATINUM" — brand-lavender, uppercase, tracking-widest, xs
+    Price: "34.99" + "/month" — white 32px 700
+    Feature list (Lucide Check icons, white):
+      10 daily matches + priority
+      Unlimited coach — weekly sessions
+      Unlimited match swaps
+      Full compatibility breakdown
+      150 credits per month included
+      5 profile boosts per month
+      Relationship support + counsellor referral
+    CTA: "Go Platinum" — bg rgba(184,160,212,0.15), border brand-lavender, 
+    white text, full width
+
+=============================================================================
+BOTTOM NAVIGATION BAR
+=============================================================================
+
+Fixed bottom, full width, max-width 390px, centered:
+  bg rgba(28,11,58,0.95), backdrop-blur-xl
+  border-top: 1px solid rgba(184,160,212,0.1)
+  height: 64px
+  padding-bottom: env(safe-area-inset-bottom)
+
+5 tabs, evenly spaced:
+  House icon → /home
+  MessageCircle icon → /messages
+  Sparkles icon → Cupid sheet (opens slide-up sheet, not a route)
+  Trophy icon → /badges
+  User icon → profile settings (mock, can be /home for now)
+
+Active tab: icon + label below, text gold, icon gold
+Inactive: icon only, color brand-textSub (no label)
+Framer Motion: fade transition on route change, 150ms
+
+Bottom nav should NOT appear on: /, /login, /signup, /signup/verify, 
+/signup/onboarding, /exclusive
+
+=============================================================================
+MOCK DATA  /src/data/mockData.ts
+=============================================================================
+
+export const currentUser = {
+  name: "Alex",
+  age: 28,
+  city: "London",
+  credits: 42,
+  plan: "free"
+}
+
+export const profiles = [
+  {
+    id: "1",
+    name: "Isabelle",
+    age: 29,
+    city: "London",
+    photos: [pexels_url_1, pexels_url_6, pexels_url_8],
+    bio: "Architect. Weekend hiker. Here because I am serious about finding something real.",
+    compatibility: 94,
+    dimensions: {
+      values: 96, personality: 91, lifestyle: 88,
+      emotional: 95, attachment: 92, social: 87, intent: 98, aesthetic: 82
+    },
+    traits: ["Values-aligned", "Adventurous", "Emotionally available"],
+    coachNote: "Isabelle shares your position on family and scores highly on emotional availability. Seven of your eight compatibility dimensions are in strong alignment."
+  },
+  {
+    id: "2",
+    name: "Clara",
+    age: 31,
+    city: "London",
+    photos: [pexels_url_3, pexels_url_10],
+    bio: "Works in sustainable fashion. Reads too much. Would rather be in the mountains.",
+    compatibility: 89,
+    dimensions: {
+      values: 94, personality: 86, lifestyle: 84,
+      emotional: 90, attachment: 88, social: 82, intent: 95, aesthetic: 78
+    },
+    traits: ["Intentional", "Creative", "Outdoors person"],
+    coachNote: "Clara leads with values in the same way you do. Her attachment style is secure, which matches well with your profile."
+  },
+  {
+    id: "3",
+    name: "Sophie",
+    age: 27,
+    city: "London",
+    photos: [pexels_url_5, pexels_url_7],
+    bio: "Product designer. Runs half marathons reluctantly. Good at dinner recommendations.",
+    compatibility: 86,
+    dimensions: {
+      values: 88, personality: 90, lifestyle: 82,
+      emotional: 84, attachment: 86, social: 92, intent: 80, aesthetic: 90
+    },
+    traits: ["Analytical", "Active", "Socially confident"],
+    coachNote: "Sophie scores highly on personality alignment with you. Her social energy balances well with your profile."
+  },
+  // 2 more similar profiles
+]
+
+export const chatThreads = [
+  {
+    matchId: "1",
+    matchName: "Isabelle",
+    matchPhoto: pexels_url_1,
+    lastMessage: "That sounds like a good spot actually",
+    lastTime: "2h ago",
+    unread: true,
+    coachSuggestion: "You both mentioned weekend hikes during onboarding. That might be a natural opening.",
+    messages: [
+      { from: "them", text: "Hey — good to finally match with someone who actually has a bio.", time: "Yesterday, 7:42 PM" },
+      { from: "user", text: "Ha, I figured it was worth the effort. How has Coupld been for you so far?", time: "Yesterday, 8:01 PM" },
+      { from: "them", text: "Honestly better than I expected. The matches are more considered.", time: "Yesterday, 8:15 PM" },
+      { from: "user", text: "Agreed. Do you actually hike or is that just in the profile?", time: "Yesterday, 8:22 PM" },
+      { from: "them", text: "Every weekend if I can. You?", time: "Yesterday, 8:30 PM" },
+      { from: "user", text: "Same. Somewhere around London mostly.", time: "Today, 9:15 AM" },
+      { from: "them", text: "That sounds like a good spot actually", time: "Today, 11:02 AM" }
+    ]
+  },
+  {
+    matchId: "2",
+    matchName: "Clara",
+    matchPhoto: pexels_url_3,
+    lastMessage: "Let me know what you think",
+    lastTime: "1d ago",
+    unread: false,
+    coachSuggestion: "Clara has not replied in 24 hours. A short follow-up tends to do better than silence.",
+    messages: [
+      { from: "user", text: "Hey Clara — the sustainable fashion angle is genuinely interesting. What does that look like day to day?", time: "2 days ago" },
+      { from: "them", text: "It is more logistics than it sounds. But I love it. Let me know what you think", time: "Yesterday" }
+    ]
+  },
+  {
+    matchId: "3",
+    matchName: "Sophie",
+    matchPhoto: pexels_url_5,
+    lastMessage: "New match — say something",
+    lastTime: "Just now",
+    unread: true,
+    coachSuggestion: "Sophie is a product designer — you both work in tech-adjacent fields. That is a decent natural opening.",
+    messages: []
+  }
+]
+
+export const venues = [
+  { name: "Brat, Shoreditch", type: "Restaurant", photo: pexels_url_11 },
+  { name: "Sky Garden", type: "Bar", photo: pexels_url_12 },
+  { name: "Humble Grape", type: "Wine Bar", photo: pexels_url_13 }
+]
+
+export const badges = [
+  { id: "chat", icon: "MessageCircle", label: "First Conversation", description: "You sent your first message.", unlocked: true },
+  { id: "match", icon: "Star", label: "First Match", description: "You accessed your first match.", unlocked: true },
+  { id: "date", icon: "CalendarCheck", label: "First Date", description: "You went on your first date.", unlocked: true },
+  { id: "review", icon: "ClipboardCheck", label: "First Review", description: "You gave your first date feedback.", unlocked: true },
+  { id: "platinum", icon: "Crown", label: "Platinum Member", description: "Upgrade to Platinum to unlock.", unlocked: false },
+  { id: "theone", icon: "Heart", label: "The One", description: "Declare an exclusive relationship.", unlocked: false },
+  { id: "engaged", icon: "Ring", label: "Engaged", description: "Report an engagement milestone.", unlocked: false },
+  { id: "married", icon: "Star", label: "Married", description: "Report a marriage milestone.", unlocked: false }
+]
+
+=============================================================================
+FINAL BUILD CHECKLIST
+=============================================================================
+
+Before completing:
+
+1. Fetch all Pexels image URLs using pexels MCP, store in mockData.ts
+2. Install all shadcn components: 
+   npx shadcn@latest add button card badge input textarea dialog sheet 
+   tabs progress avatar separator toast drawer
+3. Install magic-ui components used: AuroraBackground/AnimatedGradient, 
+   NumberTicker (for compatibility score), TextReveal (for exclusive screen)
+4. Confirm Plus Jakarta Sans loads correctly from Google Fonts
+5. Confirm Framer Motion AnimatePresence wraps all route changes
+6. Use playwright MCP to screenshot: /, /login, /signup/onboarding, /home, 
+   /profile/1, /messages, /feedback, /exclusive, /badges, /upgrade
+7. Confirm skip button appears on /signup, /signup/verify, /signup/onboarding 
+   and correctly navigates to /home
+8. Confirm bottom nav does NOT appear on auth and onboarding routes
+9. Confirm confetti fires on /exclusive mount
+10. Run npm run dev — zero console errors, zero TypeScript errors
+11. Test full sign-up flow: / → /signup → /signup/verify → /signup/onboarding → /home
+12. Test login flow: / → /login → /home (pre-filled Alex profile, instant)
+13. All screens navigable. No dead ends. No placeholder images anywhere.

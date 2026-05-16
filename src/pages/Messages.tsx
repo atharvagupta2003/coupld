@@ -28,8 +28,8 @@ function TypingIndicator() {
       style={{
         padding: '10px 14px',
         borderRadius: '4px 16px 16px 16px',
-        background: 'rgba(184,160,212,0.10)',
-        border: '1px solid rgba(184,160,212,0.15)',
+        background: 'rgba(0,0,0,0.05)',
+        border: '1px solid rgba(0,0,0,0.08)',
         width: 56,
       }}
     >
@@ -56,8 +56,8 @@ function CupidCoachBubble({ msg }: { msg: Message }) {
       <div
         className="rounded-2xl p-4"
         style={{
-          background: 'linear-gradient(135deg, rgba(184,160,212,0.10), rgba(212,168,67,0.07))',
-          border: '1px solid rgba(184,160,212,0.28)',
+          background: 'linear-gradient(135deg, rgba(13,148,136,0.08), rgba(13,148,136,0.04))',
+          border: '1px solid rgba(13,148,136,0.25)',
         }}
       >
         <div className="flex items-center gap-2 mb-3">
@@ -65,9 +65,9 @@ function CupidCoachBubble({ msg }: { msg: Message }) {
           <p className="text-brand-lavender font-semibold uppercase tracking-widest" style={{ fontSize: 10 }}>
             Cupid · Your Coach
           </p>
-          <Sparkles size={12} className="ml-auto" style={{ color: '#D4A843' }} />
+          <Sparkles size={12} className="ml-auto" style={{ color: '#0D9488' }} />
         </div>
-        <p className="text-white text-sm leading-relaxed">{msg.text}</p>
+        <p className="text-gray-900 text-sm leading-relaxed">{msg.text}</p>
         <p className="text-brand-textSub mt-2" style={{ fontSize: 10 }}>{msg.time}</p>
       </div>
     </motion.div>
@@ -89,14 +89,14 @@ function MessageBubble({ msg }: { msg: Message }) {
           maxWidth: '78%',
           padding: '10px 14px',
           borderRadius: isUser ? '16px 4px 16px 16px' : '4px 16px 16px 16px',
-          background: isUser ? '#2D1B4E' : 'rgba(184,160,212,0.10)',
-          border: isUser ? 'none' : '1px solid rgba(184,160,212,0.15)',
+          background: isUser ? '#0D9488' : 'rgba(0,0,0,0.05)',
+          border: isUser ? 'none' : '1px solid rgba(0,0,0,0.08)',
         }}
       >
         {msg.photo && (
           <img src={msg.photo} alt="" className="rounded-xl mb-2 w-full object-cover" style={{ maxHeight: 220 }} />
         )}
-        <p className="text-white text-sm leading-relaxed">{msg.text}</p>
+        <p className={`text-sm leading-relaxed ${isUser ? 'text-white' : 'text-gray-900'}`}>{msg.text}</p>
         <p className="text-brand-textSub mt-1" style={{ fontSize: 10 }}>{msg.time}</p>
       </div>
     </motion.div>
@@ -196,7 +196,7 @@ export default function Messages() {
   if (thread) {
     return (
       <motion.div
-        className="flex flex-col h-screen w-full bg-[#1C0B3A]"
+        className="flex flex-col h-screen w-full bg-white"
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0 }}
@@ -205,14 +205,14 @@ export default function Messages() {
         {/* Top bar */}
         <div
           className="flex items-center gap-3 px-4 py-3 shrink-0 z-10"
-          style={{ background: 'rgba(28,11,58,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.1)' }}
+          style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
         >
           <button onClick={() => { setActiveThread(null); setLiveMessages([]); setBookingDone(false); setInputUnlocked(false); streamingRef.current = false }}>
-            <ChevronLeft size={22} className="text-white" />
+            <ChevronLeft size={22} className="text-gray-900" />
           </button>
           <img src={thread.matchPhoto} alt="" className="w-9 h-9 rounded-full object-cover" />
           <div className="flex-1">
-            <p className="text-white font-semibold text-sm">{thread.matchName}, 29</p>
+            <p className="text-gray-900 font-semibold text-sm">{thread.matchName}, 29</p>
             <p className="text-brand-textSub" style={{ fontSize: 11 }}>Active recently</p>
           </div>
           <MoreVertical size={20} className="text-brand-textSub" />
@@ -221,7 +221,7 @@ export default function Messages() {
         {/* Coach suggestion banner */}
         <div
           className="mx-4 mt-2 rounded-xl p-3 shrink-0"
-          style={{ background: 'rgba(184,160,212,0.06)', borderLeft: '2px solid #B8A0D4' }}
+          style={{ background: 'rgba(13,148,136,0.06)', borderLeft: '2px solid #0D9488' }}
         >
           <div className="flex items-center gap-2 mb-1">
             <CupidAvatar size={20} pulse={false} />
@@ -229,9 +229,9 @@ export default function Messages() {
               From Your Coach
             </p>
           </div>
-          <p className="text-white text-xs leading-relaxed">{thread.coachSuggestion}</p>
+          <p className="text-gray-900 text-xs leading-relaxed">{thread.coachSuggestion}</p>
           <div className="flex gap-4 mt-1.5">
-            <button className="font-semibold text-xs" style={{ color: '#D4A843' }}>Use this</button>
+            <button className="font-semibold text-xs" style={{ color: '#0D9488' }}>Use this</button>
             <button className="text-brand-textSub text-xs">Dismiss</button>
           </div>
         </div>
@@ -255,11 +255,11 @@ export default function Messages() {
             <button
               onClick={() => setShowDatePlan(!showDatePlan)}
               className="w-full flex items-center justify-between p-3 rounded-xl"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.15)' }}
+              style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}
             >
               <div className="flex items-center gap-2">
                 <Calendar size={15} className="text-brand-lavender" />
-                <span className="text-white text-sm font-medium">Plan a date with {thread.matchName}</span>
+                <span className="text-gray-900 text-sm font-medium">Plan a date with {thread.matchName}</span>
               </div>
               <motion.div animate={{ rotate: showDatePlan ? 180 : 0 }} transition={{ duration: 0.2 }}>
                 <ChevronDown size={15} className="text-brand-textSub" />
@@ -274,19 +274,19 @@ export default function Messages() {
                   exit={{ height: 0, opacity: 0 }}
                   className="overflow-hidden"
                 >
-                  <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(184,160,212,0.15)' }}>
+                  <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(0,0,0,0.08)' }}>
                     <img src={venues[0].photo} alt={venues[0].name} className="w-full object-cover" style={{ height: 110 }} />
-                    <div className="p-3 bg-[#1C0B3A]">
-                      <p className="text-white font-semibold text-sm">{venues[0].name}</p>
+                    <div className="p-3 bg-white">
+                      <p className="text-gray-900 font-semibold text-sm">{venues[0].name}</p>
                       <p className="text-brand-textSub text-xs mb-2">{venues[0].type}</p>
                       <div className="flex gap-2 mb-2">
-                        <span className="px-3 py-1.5 rounded-full text-white text-xs" style={{ border: '1px solid rgba(184,160,212,0.3)' }}>Saturday eve</span>
-                        <span className="px-3 py-1.5 rounded-full text-white text-xs" style={{ border: '1px solid rgba(184,160,212,0.3)' }}>7:30 PM</span>
+                        <span className="px-3 py-1.5 rounded-full text-gray-900 text-xs" style={{ border: '1px solid rgba(13,148,136,0.25)' }}>Saturday eve</span>
+                        <span className="px-3 py-1.5 rounded-full text-gray-900 text-xs" style={{ border: '1px solid rgba(13,148,136,0.25)' }}>7:30 PM</span>
                       </div>
                       <button
                         onClick={handleBooking}
-                        className="w-full py-2.5 rounded-xl font-bold text-sm active:scale-95 transition-transform"
-                        style={{ background: '#D4A843', color: '#1C0B3A' }}
+                        className="w-full py-2.5 rounded-xl font-bold text-sm active:scale-95 transition-transform text-white"
+                        style={{ background: '#0D9488' }}
                       >
                         Suggest to {thread.matchName}
                       </button>
@@ -304,10 +304,10 @@ export default function Messages() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="mx-4 mb-2 px-4 py-2.5 rounded-xl flex items-center gap-2 shrink-0"
-            style={{ background: 'rgba(212,168,67,0.08)', border: '1px solid rgba(212,168,67,0.25)' }}
+            style={{ background: 'rgba(13,148,136,0.06)', border: '1px solid rgba(13,148,136,0.15)' }}
           >
-            <Calendar size={14} style={{ color: '#D4A843' }} />
-            <p className="text-sm font-medium" style={{ color: '#D4A843' }}>
+            <Calendar size={14} style={{ color: '#0D9488' }} />
+            <p className="text-sm font-medium" style={{ color: '#0D9488' }}>
               Date confirmed — Brat, Saturday 7:30 PM
             </p>
           </motion.div>
@@ -316,7 +316,7 @@ export default function Messages() {
         {/* Input bar */}
         <div
           className="flex items-center gap-2 px-4 py-3 shrink-0"
-          style={{ background: 'rgba(28,11,58,0.95)', borderTop: '1px solid rgba(184,160,212,0.1)', backdropFilter: 'blur(12px)' }}
+          style={{ background: 'rgba(255,255,255,0.95)', borderTop: '1px solid rgba(0,0,0,0.08)', backdropFilter: 'blur(12px)' }}
         >
           <input
             value={msgInput}
@@ -324,12 +324,12 @@ export default function Messages() {
             onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
             placeholder={inputUnlocked ? `Message ${thread.matchName}...` : 'Message...'}
             disabled={!inputUnlocked && bookingDone}
-            className="flex-1 rounded-xl px-4 py-2.5 text-white text-sm outline-none placeholder:text-brand-textSub/50 disabled:opacity-40"
-            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(184,160,212,0.15)' }}
+            className="flex-1 rounded-xl px-4 py-2.5 text-gray-900 text-sm outline-none placeholder:text-brand-textSub/50 disabled:opacity-40"
+            style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
           />
           <Mic size={20} className="text-brand-textSub shrink-0" />
           <button onClick={sendMessage}>
-            <Send size={20} className="shrink-0" style={{ color: msgInput.trim() ? '#D4A843' : '#9B8FB0' }} />
+            <Send size={20} className="shrink-0" style={{ color: msgInput.trim() ? '#0D9488' : '#6B7280' }} />
           </button>
         </div>
 
@@ -347,15 +347,15 @@ export default function Messages() {
               <div
                 className="rounded-2xl p-4 flex items-center gap-3"
                 style={{
-                  background: 'linear-gradient(135deg, #2D1B4E, #1C0B3A)',
-                  border: '1px solid rgba(184,160,212,0.3)',
-                  boxShadow: '0 8px 40px rgba(184,160,212,0.18)',
+                  background: 'linear-gradient(135deg, #F9FAFB, #FFFFFF)',
+                  border: '1px solid rgba(13,148,136,0.25)',
+                  boxShadow: '0 8px 40px rgba(13,148,136,0.12)',
                 }}
               >
                 <CupidCharacter size={44} />
                 <div className="flex-1">
                   <p className="text-brand-lavender font-semibold text-xs uppercase tracking-widest mb-0.5">Cupid</p>
-                  <p className="text-white text-sm leading-snug">
+                  <p className="text-gray-900 text-sm leading-snug">
                     Use the date planner below to book something with Isabelle.
                   </p>
                 </div>
@@ -370,7 +370,7 @@ export default function Messages() {
   // Chat list
   return (
     <motion.div
-      className="flex flex-col w-full min-h-screen bg-[#1C0B3A] pb-24"
+      className="flex flex-col w-full min-h-screen bg-white pb-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -378,9 +378,9 @@ export default function Messages() {
     >
       <div
         className="sticky top-0 flex items-center justify-between px-5 py-4 z-10"
-        style={{ background: 'rgba(28,11,58,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.08)' }}
+        style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
-        <h1 className="text-white font-bold text-xl">Messages</h1>
+        <h1 className="text-gray-900 font-bold text-xl">Messages</h1>
       </div>
 
       <div className="flex flex-col mt-2">
@@ -388,17 +388,17 @@ export default function Messages() {
           <button
             key={t.matchId}
             onClick={() => { setActiveThread(t.matchId); setLiveMessages([]); setBookingDone(false); setInputUnlocked(false); streamingRef.current = false }}
-            className="flex items-center gap-3 px-5 py-4 text-left transition-colors hover:bg-white/5"
-            style={{ borderBottom: '1px solid rgba(184,160,212,0.08)' }}
+            className="flex items-center gap-3 px-5 py-4 text-left transition-colors hover:bg-black/5"
+            style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}
           >
             <div className="relative shrink-0">
               <img src={t.matchPhoto} alt="" className="w-12 h-12 rounded-full object-cover" />
               {t.unread && (
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-brand-lavender border-2 border-[#1C0B3A]" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-brand-lavender border-2 border-white" />
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-white font-semibold text-sm">{t.matchName}</p>
+              <p className="text-gray-900 font-semibold text-sm">{t.matchName}</p>
               <p className="text-brand-textSub text-xs truncate mt-0.5">{t.lastMessage}</p>
             </div>
             <span className="text-brand-textSub text-xs shrink-0">{t.lastTime}</span>

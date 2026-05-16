@@ -144,7 +144,7 @@ export default function DatePlanning() {
 
   return (
     <motion.div
-      className="flex flex-col w-full min-h-screen bg-[#1C0B3A] pb-8"
+      className="flex flex-col w-full min-h-screen bg-white pb-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -152,13 +152,13 @@ export default function DatePlanning() {
       {/* Header */}
       <div
         className="sticky top-0 z-10 flex items-center gap-3 px-4 py-4"
-        style={{ background: 'rgba(28,11,58,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.1)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
         <button onClick={() => navigate(-1)} className="pl-8">
-          <ChevronLeft size={22} className="text-white" />
+          <ChevronLeft size={22} className="text-gray-900" />
         </button>
         <div className="flex-1">
-          <h1 className="text-white font-bold text-lg">Plan a Date</h1>
+          <h1 className="text-gray-900 font-bold text-lg">Plan a Date</h1>
           <p className="text-brand-textSub" style={{ fontSize: 11 }}>15% off when you book through Coupld</p>
         </div>
         <div
@@ -170,11 +170,11 @@ export default function DatePlanning() {
       </div>
 
       {/* Cupid suggestion */}
-      <div className="mx-4 mt-4 rounded-2xl p-4 flex items-start gap-3" style={{ background: 'rgba(184,160,212,0.07)', border: '1px solid rgba(184,160,212,0.18)' }}>
+      <div className="mx-4 mt-4 rounded-2xl p-4 flex items-start gap-3" style={{ background: 'rgba(13,148,136,0.05)', border: '1px solid rgba(13,148,136,0.15)' }}>
         <CupidCharacter size={36} />
         <div>
           <p className="text-brand-lavender font-semibold text-xs uppercase tracking-widest mb-1">Cupid Recommends</p>
-          <p className="text-white text-sm leading-relaxed">
+          <p className="text-gray-900 text-sm leading-relaxed">
             Based on both profiles, I'd suggest Nightjar (bar) for a second date or Bad Axe if you want energy. Coffee at Monmouth keeps it easy if you haven't met yet.
           </p>
         </div>
@@ -189,8 +189,8 @@ export default function DatePlanning() {
             className="shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
             style={
               activeCategory === cat
-                ? { background: '#B8A0D4', color: '#1C0B3A' }
-                : { background: 'rgba(255,255,255,0.06)', color: '#9B8FB0', border: '1px solid rgba(184,160,212,0.2)' }
+                ? { background: '#0D9488', color: 'white' }
+                : { background: 'rgba(0,0,0,0.04)', color: '#6B7280', border: '1px solid rgba(0,0,0,0.08)' }
             }
           >
             {cat}
@@ -212,14 +212,14 @@ export default function DatePlanning() {
               onClick={() => setSelected(selected === venue.id ? null : venue.id)}
               className="rounded-2xl overflow-hidden cursor-pointer"
               style={{
-                border: selected === venue.id ? '1px solid #B8A0D4' : '1px solid rgba(184,160,212,0.15)',
-                background: 'rgba(255,255,255,0.03)',
+                border: selected === venue.id ? '1px solid #0D9488' : '1px solid rgba(0,0,0,0.08)',
+                background: selected === venue.id ? 'rgba(13,148,136,0.03)' : 'rgba(0,0,0,0.02)',
               }}
             >
               {/* Photo */}
               <div className="relative">
                 <img src={venue.photo} alt={venue.name} className="w-full object-cover" style={{ height: 160 }} />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(28,11,58,0.85) 100%)' }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.75) 100%)' }} />
 
                 {/* Discount badge */}
                 <div
@@ -233,7 +233,7 @@ export default function DatePlanning() {
                 {venue.tag && (
                   <div
                     className="absolute top-3 right-3 px-2.5 py-1 rounded-full font-semibold"
-                    style={{ background: 'rgba(212,168,67,0.9)', color: '#1C0B3A', fontSize: 11 }}
+                    style={{ background: 'rgba(13,148,136,0.9)', color: 'white', fontSize: 11 }}
                   >
                     {venue.tag}
                   </div>
@@ -248,8 +248,8 @@ export default function DatePlanning() {
                       <span className="text-brand-textSub" style={{ fontSize: 11 }}>{venue.neighborhood}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Star size={10} style={{ color: '#D4A843' }} />
-                      <span style={{ color: '#D4A843', fontSize: 11, fontWeight: 600 }}>{venue.rating}</span>
+                      <Star size={10} style={{ color: '#0D9488' }} />
+                      <span style={{ color: '#0D9488', fontSize: 11, fontWeight: 600 }}>{venue.rating}</span>
                     </div>
                     <span className="text-brand-textSub" style={{ fontSize: 11 }}>{venue.price}</span>
                     <span className="text-brand-textSub" style={{ fontSize: 11 }}>{venue.duration}</span>
@@ -264,9 +264,9 @@ export default function DatePlanning() {
                 {/* Cupid note */}
                 <div
                   className="rounded-xl px-3 py-2.5 mb-3"
-                  style={{ background: 'rgba(184,160,212,0.06)', border: '1px solid rgba(184,160,212,0.15)' }}
+                  style={{ background: 'rgba(13,148,136,0.05)', border: '1px solid rgba(13,148,136,0.15)' }}
                 >
-                  <p className="text-brand-textSub text-xs leading-relaxed italic">"{venue.cupidNote}"</p>
+                  <p className="text-gray-500 text-xs leading-relaxed italic">"{venue.cupidNote}"</p>
                 </div>
 
                 {/* Expanded slot selector */}
@@ -277,7 +277,7 @@ export default function DatePlanning() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                     >
-                      <p className="text-white font-semibold text-xs mb-2">Available slots</p>
+                      <p className="text-gray-900 font-semibold text-xs mb-2">Available slots</p>
                       <div className="flex gap-2 flex-wrap mb-3">
                         {venue.slots.map(slot => (
                           <button
@@ -286,8 +286,8 @@ export default function DatePlanning() {
                             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all"
                             style={
                               selectedSlot === slot
-                                ? { background: '#B8A0D4', color: '#1C0B3A' }
-                                : { background: 'rgba(255,255,255,0.06)', color: '#B8A0D4', border: '1px solid rgba(184,160,212,0.3)' }
+                                ? { background: '#0D9488', color: 'white' }
+                                : { background: 'rgba(0,0,0,0.04)', color: '#0D9488', border: '1px solid rgba(13,148,136,0.3)' }
                             }
                           >
                             <Clock size={10} />
@@ -301,7 +301,7 @@ export default function DatePlanning() {
                           onClick={(e) => { e.stopPropagation(); handleBook() }}
                           disabled={!selectedSlot}
                           className="w-full py-3 rounded-xl font-bold text-sm transition-all disabled:opacity-40"
-                          style={{ background: selectedSlot ? '#D4A843' : 'rgba(212,168,67,0.3)', color: '#1C0B3A' }}
+                          style={{ background: selectedSlot ? '#0D9488' : 'rgba(13,148,136,0.3)', color: 'white' }}
                         >
                           Book with Coupld — {venue.discount}% off
                         </button>
@@ -326,7 +326,7 @@ export default function DatePlanning() {
                   <button
                     onClick={(e) => { e.stopPropagation(); setSelected(venue.id) }}
                     className="w-full py-2.5 rounded-xl font-semibold text-sm"
-                    style={{ background: 'rgba(184,160,212,0.08)', border: '1px solid rgba(184,160,212,0.2)', color: '#B8A0D4' }}
+                    style={{ background: 'rgba(13,148,136,0.06)', border: '1px solid rgba(13,148,136,0.2)', color: '#0D9488' }}
                   >
                     <span className="flex items-center justify-center gap-2">
                       <Calendar size={14} />

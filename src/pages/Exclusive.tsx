@@ -108,7 +108,7 @@ export default function Exclusive() {
 
   return (
     <motion.div
-      className="flex flex-col min-h-screen w-full bg-[#1C0B3A] px-6 py-16 pb-24 overflow-y-auto"
+      className="flex flex-col min-h-screen w-full bg-white px-6 py-16 pb-24 overflow-y-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -120,7 +120,7 @@ export default function Exclusive() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-white font-bold text-center"
+              className="text-gray-900 font-bold text-center"
               style={{ fontSize: 42 }}
             >
               You did it.
@@ -149,14 +149,14 @@ export default function Exclusive() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}
               className="w-full my-6"
-              style={{ height: 1, background: 'rgba(184,160,212,0.15)' }}
+              style={{ height: 1, background: 'rgba(0,0,0,0.1)' }}
             />
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.4 }}
-              className="text-white font-semibold text-base self-start mb-4"
+              className="text-gray-900 font-semibold text-base self-start mb-4"
             >
               What happens next
             </motion.p>
@@ -171,15 +171,15 @@ export default function Exclusive() {
                 transition={{ delay: 1.5 }}
                 onClick={() => setOpenSheet('support')}
                 className="rounded-2xl overflow-hidden text-left w-full active:scale-97 transition-all"
-                style={{ border: '1px solid rgba(184,160,212,0.2)' }}
+                style={{ border: '1px solid rgba(0,0,0,0.08)' }}
               >
                 <img src={venues[0].photo} alt="" className="w-full object-cover" style={{ height: 130 }} />
                 <div
                   className="p-4 flex items-center gap-3"
-                  style={{ background: 'rgba(255,255,255,0.04)' }}
+                  style={{ background: 'rgba(0,0,0,0.03)' }}
                 >
                   <div className="flex-1">
-                    <p className="text-white font-semibold text-sm">Relationship Support</p>
+                    <p className="text-gray-900 font-semibold text-sm">Relationship Support</p>
                     <p className="text-brand-textSub text-xs mt-1 leading-relaxed">Couple counselling, date ideas, milestones</p>
                   </div>
                   <ChevronRight size={16} className="text-brand-textSub shrink-0" />
@@ -193,15 +193,15 @@ export default function Exclusive() {
                 transition={{ delay: 1.62 }}
                 onClick={() => navigate('/exclusive-coach')}
                 className="rounded-2xl p-4 text-left w-full flex items-center gap-3 active:scale-97 transition-all"
-                style={{ background: 'rgba(184,160,212,0.07)', border: '1px solid rgba(184,160,212,0.2)' }}
+                style={{ background: 'rgba(13,148,136,0.05)', border: '1px solid rgba(13,148,136,0.15)' }}
               >
                 <div className="flex-1">
-                  <p className="text-white font-semibold text-sm">Cupid is still here</p>
+                  <p className="text-gray-900 font-semibold text-sm">Cupid is still here</p>
                   <p className="text-brand-textSub text-xs mt-1 leading-relaxed">Now focused on your relationship, not finding you matches</p>
                 </div>
-                <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full" style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.3)' }}>
-                  <Sparkles size={11} style={{ color: '#D4A843' }} />
-                  <span className="text-xs font-semibold" style={{ color: '#D4A843' }}>Chat</span>
+                <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full" style={{ background: 'rgba(13,148,136,0.12)', border: '1px solid rgba(13,148,136,0.3)' }}>
+                  <Sparkles size={11} style={{ color: '#0D9488' }} />
+                  <span className="text-xs font-semibold" style={{ color: '#0D9488' }}>Chat</span>
                 </div>
               </motion.button>
 
@@ -221,7 +221,7 @@ export default function Exclusive() {
                 >
                   <Tag size={15} style={{ color: '#D4A843' }} className="shrink-0" />
                   <div className="flex-1">
-                    <p className="text-white font-semibold text-sm">Exclusive Partner Offers</p>
+                    <p className="text-gray-900 font-semibold text-sm">Exclusive Partner Offers</p>
                     <p className="text-brand-textSub text-xs mt-0.5 leading-relaxed">Restaurants, experiences &amp; gifts curated for couples</p>
                   </div>
                   <ChevronRight size={16} className="text-brand-textSub shrink-0" />
@@ -245,7 +245,7 @@ export default function Exclusive() {
               <button
                 onClick={() => navigate('/exclusive-profile')}
                 className="w-full py-3.5 rounded-xl font-bold text-sm"
-                style={{ background: '#D4A843', color: '#1C0B3A' }}
+                style={{ background: '#0D9488', color: 'white' }}
               >
                 View couple profile
               </button>
@@ -278,7 +278,7 @@ export default function Exclusive() {
         {openSheet === 'support' && (
           <motion.div
             className="fixed bottom-0 left-0 right-0 mx-auto max-w-[390px] z-40 rounded-t-3xl"
-            style={{ background: '#1C0B3A', border: '1px solid rgba(184,160,212,0.2)', maxHeight: '85vh', overflowY: 'auto' }}
+            style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', maxHeight: '85vh', overflowY: 'auto' }}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -286,7 +286,7 @@ export default function Exclusive() {
           >
             <div className="p-6">
               <div className="w-10 h-1 rounded-full bg-brand-textSub/30 mx-auto mb-5" />
-              <p className="text-white font-bold text-xl mb-5">Relationship Support</p>
+              <p className="text-gray-900 font-bold text-xl mb-5">Relationship Support</p>
 
               <div className="flex flex-col gap-3">
                 {SUPPORT_ITEMS.map(item => {
@@ -303,7 +303,7 @@ export default function Exclusive() {
                           <Icon size={18} style={{ color: item.color }} />
                         </div>
                         <div className="flex-1">
-                          <p className="text-white font-semibold text-sm">{item.label}</p>
+                          <p className="text-gray-900 font-semibold text-sm">{item.label}</p>
                           <p className="text-brand-textSub text-xs mt-0.5">{item.sub}</p>
                         </div>
                         <motion.div animate={{ rotate: isOpen ? 90 : 0 }}>
@@ -322,24 +322,24 @@ export default function Exclusive() {
                             <div className="px-4 pb-4 pt-2 flex flex-col gap-2">
                               {item.id === 'counseling' && item.sessions?.map(s => (
                                 <button key={s} className="flex items-center justify-between px-3 py-2.5 rounded-xl text-left"
-                                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.15)' }}>
-                                  <span className="text-white text-xs font-medium">{s}</span>
+                                  style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}>
+                                  <span className="text-gray-900 text-xs font-medium">{s}</span>
                                   <span className="text-xs font-semibold" style={{ color: '#B8A0D4' }}>Book</span>
                                 </button>
                               ))}
                               {item.id === 'date-ideas' && item.ideas?.map(idea => (
                                 <button key={idea} onClick={() => navigate('/date-planning')}
                                   className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-left"
-                                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(120,196,160,0.2)' }}>
+                                  style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(120,196,160,0.2)' }}>
                                   <Calendar size={12} style={{ color: '#78C4A0' }} />
-                                  <span className="text-white text-xs">{idea}</span>
+                                  <span className="text-gray-900 text-xs">{idea}</span>
                                 </button>
                               ))}
                               {item.id === 'milestones' && item.milestones?.map(m => (
                                 <div key={m.label} className="flex items-center gap-3 px-3 py-2 rounded-xl"
-                                  style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${m.done ? 'rgba(120,196,160,0.3)' : 'rgba(184,160,212,0.12)'}` }}>
-                                  <CheckCircle size={14} style={{ color: m.done ? '#78C4A0' : '#4A3866' }} className="shrink-0" />
-                                  <span className={`text-xs ${m.done ? 'text-white' : 'text-brand-textSub'}`}>{m.label}</span>
+                                  style={{ background: 'rgba(0,0,0,0.02)', border: `1px solid ${m.done ? 'rgba(120,196,160,0.3)' : 'rgba(0,0,0,0.08)'}` }}>
+                                  <CheckCircle size={14} style={{ color: m.done ? '#78C4A0' : '#D1D5DB' }} className="shrink-0" />
+                                  <span className={`text-xs ${m.done ? 'text-gray-900' : 'text-brand-textSub'}`}>{m.label}</span>
                                   {m.done && <span className="ml-auto text-xs font-semibold" style={{ color: '#78C4A0' }}>✓</span>}
                                 </div>
                               ))}
@@ -361,7 +361,7 @@ export default function Exclusive() {
         {openSheet === 'offers' && (
           <motion.div
             className="fixed bottom-0 left-0 right-0 mx-auto max-w-[390px] z-40 rounded-t-3xl"
-            style={{ background: '#1C0B3A', border: '1px solid rgba(212,168,67,0.2)', maxHeight: '85vh', overflowY: 'auto' }}
+            style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', maxHeight: '85vh', overflowY: 'auto' }}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -370,7 +370,7 @@ export default function Exclusive() {
             <div className="p-6">
               <div className="w-10 h-1 rounded-full bg-brand-textSub/30 mx-auto mb-5" />
               <div className="flex items-center gap-2 mb-1">
-                <p className="text-white font-bold text-xl">Exclusive Offers</p>
+                <p className="text-gray-900 font-bold text-xl">Exclusive Offers</p>
                 <div className="px-2 py-0.5 rounded-full text-xs font-bold" style={{ background: 'rgba(120,196,160,0.15)', color: '#78C4A0', border: '1px solid rgba(120,196,160,0.3)' }}>For couples</div>
               </div>
               <p className="text-brand-textSub text-xs mb-5">Curated for Alex &amp; Isabelle · Book through Coupld for instant discount</p>
@@ -384,7 +384,7 @@ export default function Exclusive() {
                       <div className="p-4" style={{ background: 'rgba(212,168,67,0.04)' }}>
                         <div className="flex items-start justify-between mb-1">
                           <div className="flex-1">
-                            <p className="text-white font-bold text-sm">{offer.offer}</p>
+                            <p className="text-gray-900 font-bold text-sm">{offer.offer}</p>
                             <p className="text-brand-textSub text-xs mt-0.5">{offer.venue}</p>
                           </div>
                           <div className="text-right shrink-0 ml-3">
@@ -403,7 +403,7 @@ export default function Exclusive() {
                             className="flex-1 py-2 rounded-xl font-bold text-xs"
                             style={isBooked
                               ? { background: 'rgba(120,196,160,0.12)', color: '#78C4A0', border: '1px solid rgba(120,196,160,0.3)' }
-                              : { background: '#D4A843', color: '#1C0B3A' }}
+                              : { background: '#0D9488', color: 'white' }}
                           >
                             {isBooked ? '✓ Booked' : 'Book with Coupld'}
                           </button>
@@ -423,14 +423,14 @@ export default function Exclusive() {
         {openSheet === 'share' && (
           <motion.div
             className="fixed bottom-0 left-0 right-0 mx-auto max-w-[390px] z-40 rounded-t-3xl p-6"
-            style={{ background: '#1C0B3A', border: '1px solid rgba(184,160,212,0.2)' }}
+            style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)' }}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 26 }}
           >
             <div className="w-10 h-1 rounded-full bg-brand-textSub/30 mx-auto mb-5" />
-            <p className="text-white font-bold text-xl mb-2">Share Your Story</p>
+            <p className="text-gray-900 font-bold text-xl mb-2">Share Your Story</p>
             <p className="text-brand-textSub text-sm mb-5">
               Alex &amp; Isabelle found each other on Coupld. Let the world know.
             </p>
@@ -438,7 +438,7 @@ export default function Exclusive() {
             {/* Story card preview */}
             <div
               className="rounded-2xl p-5 mb-5 flex flex-col items-center text-center"
-              style={{ background: 'linear-gradient(135deg, rgba(184,160,212,0.15), rgba(212,168,67,0.1))', border: '1px solid rgba(184,160,212,0.25)' }}
+              style={{ background: 'linear-gradient(135deg, rgba(13,148,136,0.08), rgba(20,184,166,0.05))', border: '1px solid rgba(13,148,136,0.2)' }}
             >
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-8 h-8 rounded-full overflow-hidden">
@@ -449,7 +449,7 @@ export default function Exclusive() {
                   <img src="https://images.pexels.com/photos/7437171/pexels-photo-7437171.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=200&w=200" alt="Isabelle" className="w-full h-full object-cover" />
                 </div>
               </div>
-              <p className="text-white font-bold text-base">Alex &amp; Isabelle</p>
+              <p className="text-gray-900 font-bold text-base">Alex &amp; Isabelle</p>
               <p className="text-brand-textSub text-xs mt-1">Found each other on Coupld · April 2026</p>
               <p className="text-brand-lavender text-xs mt-1 font-medium">#CoupldStory</p>
             </div>

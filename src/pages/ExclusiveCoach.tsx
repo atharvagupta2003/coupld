@@ -165,8 +165,8 @@ export default function ExclusiveCoach() {
 
   const getBubbleStyle = (from: MsgFrom) => {
     if (from === 'cupid') return {
-      background: 'linear-gradient(135deg, rgba(212,168,67,0.1), rgba(184,160,212,0.07))',
-      border: '1px solid rgba(212,168,67,0.18)',
+      background: 'rgba(13,148,136,0.06)',
+      border: '1px solid rgba(13,148,136,0.15)',
       borderRadius: '4px 16px 16px 16px',
     }
     if (from === 'isabelle') return {
@@ -175,14 +175,14 @@ export default function ExclusiveCoach() {
       borderRadius: '4px 16px 16px 16px',
     }
     return {
-      background: '#2D1B4E',
+      background: '#0D9488',
       borderRadius: '16px 4px 16px 16px',
     }
   }
 
   return (
     <motion.div
-      className="flex flex-col h-screen w-full bg-[#1C0B3A]"
+      className="flex flex-col h-screen w-full bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -190,23 +190,23 @@ export default function ExclusiveCoach() {
       {/* Header */}
       <div
         className="flex items-center gap-3 px-4 py-3 shrink-0"
-        style={{ background: 'rgba(28,11,58,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(184,160,212,0.12)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(0,0,0,0.08)' }}
       >
         <button onClick={() => navigate(-1)} className="pl-8">
-          <ChevronLeft size={22} className="text-white" />
+          <ChevronLeft size={22} className="text-gray-900" />
         </button>
         <CupidCharacter size={34} />
         <div className="flex-1">
           <div className="flex items-center gap-1.5">
-            <p className="text-white font-semibold text-sm">Cupid</p>
-            <Sparkles size={11} style={{ color: '#D4A843' }} />
+            <p className="text-gray-900 font-semibold text-sm">Cupid</p>
+            <Sparkles size={11} style={{ color: '#0D9488' }} />
           </div>
           <p className="text-brand-textSub text-xs">Relationship coach · exclusive mode</p>
         </div>
 
         {/* Couple indicator */}
         <div className="flex items-center gap-1 shrink-0">
-          <img src={alexPhotos[0]} alt="Alex" className="w-7 h-7 rounded-full object-cover" style={{ border: '2px solid rgba(184,160,212,0.4)' }} />
+          <img src={alexPhotos[0]} alt="Alex" className="w-7 h-7 rounded-full object-cover" style={{ border: '2px solid rgba(13,148,136,0.4)' }} />
           <Heart size={10} style={{ color: '#C2547A' }} />
           <img src={isabelle.photos[0]} alt="Isabelle" className="w-7 h-7 rounded-full object-cover" style={{ border: '2px solid rgba(194,84,122,0.4)' }} />
         </div>
@@ -224,7 +224,7 @@ export default function ExclusiveCoach() {
       {/* Legend */}
       <div className="flex items-center gap-4 px-4 py-2 shrink-0">
         <div className="flex items-center gap-1.5">
-          <div className="w-2 h-2 rounded-full" style={{ background: '#2D1B4E', border: '1px solid rgba(184,160,212,0.4)' }} />
+          <div className="w-2 h-2 rounded-full" style={{ background: '#0D9488', border: '1px solid rgba(13,148,136,0.4)' }} />
           <span className="text-brand-textSub" style={{ fontSize: 10 }}>Alex (you)</span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -262,12 +262,12 @@ export default function ExclusiveCoach() {
                 style={{
                   maxWidth: '76%',
                   padding: '9px 13px',
-                  color: 'white',
+                  color: right ? 'white' : (msg.from === 'isabelle' ? '#111827' : '#111827'),
                   ...getBubbleStyle(msg.from),
                 }}
               >
                 {!right && (
-                  <p className="text-xs font-semibold mb-0.5 opacity-70" style={{ color: msg.from === 'isabelle' ? '#E8A0B4' : '#D4A843' }}>
+                  <p className="text-xs font-semibold mb-0.5 opacity-70" style={{ color: msg.from === 'isabelle' ? '#E8607A' : '#0D9488' }}>
                     {msg.from === 'isabelle' ? 'Isabelle' : 'Cupid'}
                   </p>
                 )}
@@ -289,7 +289,7 @@ export default function ExclusiveCoach() {
               <CupidAvatar size={26} />
               <div
                 className="flex items-center gap-1"
-                style={{ padding: '10px 14px', borderRadius: '4px 16px 16px 16px', background: 'rgba(184,160,212,0.1)', border: '1px solid rgba(184,160,212,0.15)' }}
+                style={{ padding: '10px 14px', borderRadius: '4px 16px 16px 16px', background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
               >
                 {[0, 1, 2].map(i => (
                   <motion.span
@@ -315,7 +315,7 @@ export default function ExclusiveCoach() {
               key={prompt}
               onClick={() => sendMessage(prompt)}
               className="shrink-0 px-3 py-1.5 rounded-full text-xs font-medium"
-              style={{ background: 'rgba(184,160,212,0.09)', border: '1px solid rgba(184,160,212,0.22)', color: '#B8A0D4', whiteSpace: 'nowrap' }}
+              style={{ background: 'rgba(13,148,136,0.06)', border: '1px solid rgba(13,148,136,0.2)', color: '#0D9488', whiteSpace: 'nowrap' }}
             >
               {prompt}
             </button>
@@ -326,25 +326,25 @@ export default function ExclusiveCoach() {
       {/* Input */}
       <div
         className="px-4 py-3 shrink-0 flex items-center gap-3"
-        style={{ background: 'rgba(28,11,58,0.97)', borderTop: '1px solid rgba(184,160,212,0.1)' }}
+        style={{ background: 'rgba(255,255,255,0.97)', borderTop: '1px solid rgba(0,0,0,0.08)' }}
       >
         <input
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && sendMessage(input)}
           placeholder="Ask Cupid, or message Isabelle…"
-          className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm outline-none placeholder:text-brand-textSub/50"
-          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.12)' }}
+          className="flex-1 px-4 py-2.5 rounded-xl text-gray-900 text-sm outline-none placeholder:text-gray-400"
+          style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)' }}
         />
         <button
           onClick={() => sendMessage(input)}
           className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all"
           style={{
-            background: input.trim() ? 'rgba(212,168,67,0.2)' : 'rgba(212,168,67,0.08)',
-            border: `1px solid rgba(212,168,67,${input.trim() ? '0.4' : '0.15'})`,
+            background: input.trim() ? 'rgba(13,148,136,0.15)' : 'rgba(13,148,136,0.06)',
+            border: `1px solid rgba(13,148,136,${input.trim() ? '0.4' : '0.15'})`,
           }}
         >
-          <Send size={15} style={{ color: input.trim() ? '#D4A843' : '#9B8FB0' }} />
+          <Send size={15} style={{ color: input.trim() ? '#0D9488' : '#9CA3AF' }} />
         </button>
       </div>
     </motion.div>

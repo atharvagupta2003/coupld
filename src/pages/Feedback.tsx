@@ -22,13 +22,13 @@ export default function Feedback() {
 
   return (
     <motion.div
-      className="flex flex-col w-full min-h-screen bg-[#1C0B3A] px-5 pt-14 pb-28"
+      className="flex flex-col w-full min-h-screen bg-white px-5 pt-14 pb-28"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <h1 className="text-white font-bold text-2xl">How did it go?</h1>
+      <h1 className="text-gray-900 font-bold text-2xl">How did it go?</h1>
       <p className="text-brand-textSub text-sm mt-1 mb-6">With Isabelle — Saturday evening</p>
 
       <div className="flex flex-col gap-2 mb-5">
@@ -38,17 +38,17 @@ export default function Feedback() {
             onClick={() => setSelected(opt.id)}
             className="text-left p-4 rounded-2xl transition-all"
             style={{
-              background: selected === opt.id ? 'rgba(212,168,67,0.06)' : 'rgba(255,255,255,0.04)',
+              background: selected === opt.id ? 'rgba(13,148,136,0.06)' : 'rgba(0,0,0,0.03)',
               border: selected === opt.id
-                ? '1px solid #D4A843'
+                ? '1px solid #0D9488'
                 : opt.gold
-                ? '1px solid rgba(212,168,67,0.4)'
-                : '1px solid rgba(184,160,212,0.15)',
+                ? '1px solid rgba(13,148,136,0.4)'
+                : '1px solid rgba(0,0,0,0.08)',
             }}
             animate={{ scale: selected === opt.id ? 1 : 0.98 }}
             transition={{ type: 'spring', damping: 20 }}
           >
-            <span className="text-white font-medium text-sm">{opt.label}</span>
+            <span className="text-gray-900 font-medium text-sm">{opt.label}</span>
           </motion.button>
         ))}
       </div>
@@ -58,15 +58,15 @@ export default function Feedback() {
         onChange={(e) => setNote(e.target.value)}
         rows={4}
         placeholder="Tell your coach what happened. This helps with future matches."
-        className="w-full rounded-xl px-4 py-3 text-white text-sm outline-none resize-none placeholder:text-brand-textSub/50 mb-5"
-        style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(184,160,212,0.15)' }}
+        className="w-full rounded-xl px-4 py-3 text-gray-900 text-sm outline-none resize-none placeholder:text-brand-textSub/50 mb-5"
+        style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}
       />
 
       <div className="flex gap-2 overflow-x-auto scrollbar-hide mb-6 pb-1">
         {[
-          { label: 'Plan another date', color: 'rgba(184,160,212,0.12)', border: 'rgba(184,160,212,0.3)' },
-          { label: 'Try someone new', color: 'rgba(255,255,255,0.04)', border: 'rgba(184,160,212,0.15)' },
-          { label: 'We are exclusive', color: 'rgba(212,168,67,0.08)', border: '#D4A843', tag: 'STOP BILLING' },
+          { label: 'Plan another date', color: 'rgba(13,148,136,0.08)', border: 'rgba(13,148,136,0.3)' },
+          { label: 'Try someone new', color: 'rgba(0,0,0,0.03)', border: 'rgba(0,0,0,0.08)' },
+          { label: 'We are exclusive', color: 'rgba(13,148,136,0.06)', border: '#0D9488', tag: 'STOP BILLING' },
         ].map((card) => (
           <div
             key={card.label}
@@ -78,15 +78,15 @@ export default function Feedback() {
                 {card.tag}
               </p>
             )}
-            <p className="text-white font-semibold text-sm">{card.label}</p>
+            <p className="text-gray-900 font-semibold text-sm">{card.label}</p>
           </div>
         ))}
       </div>
 
       <button
         onClick={handleSubmit}
-        className="w-full py-4 rounded-xl font-bold text-[#1C0B3A]"
-        style={{ background: '#D4A843' }}
+        className="w-full py-4 rounded-xl font-bold text-white"
+        style={{ background: '#0D9488' }}
       >
         Submit
       </button>

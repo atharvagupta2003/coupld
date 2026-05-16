@@ -37,7 +37,7 @@ export default function AdamCharacter({ size = 120, speaking = false }: Props) {
           {/* Dark gradient overlay at bottom for polish */}
           <div
             className="absolute inset-x-0 bottom-0 h-1/3"
-            style={{ background: 'linear-gradient(to top, rgba(28,11,58,0.6), transparent)' }}
+            style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.3), transparent)' }}
           />
         </div>
       </motion.div>

@@ -21,7 +21,7 @@ const TIERS = [
     id: 'premium',
     label: 'PREMIUM',
     price: '19.99',
-    labelColor: '#D4A843',
+    labelColor: '#0D9488',
     popular: true,
     features: [
       '5 curated matches',
@@ -32,8 +32,8 @@ const TIERS = [
       '2 profile boosts per month',
     ],
     cta: 'Start Free Trial',
-    ctaStyle: { background: '#D4A843', color: '#1C0B3A' },
-    badge: { label: 'Premium', color: '#D4A843', icon: Star },
+    ctaStyle: { background: '#0D9488', color: 'white' },
+    badge: { label: 'Premium', color: '#0D9488', icon: Star },
   },
   {
     id: 'platinum',
@@ -50,7 +50,7 @@ const TIERS = [
       'Relationship support + counsellor referral',
     ],
     cta: 'Go Platinum',
-    ctaStyle: { background: 'rgba(184,160,212,0.15)', border: '1px solid #B8A0D4', color: 'white' },
+    ctaStyle: { background: 'rgba(13,148,136,0.08)', border: '1px solid #0D9488', color: '#0D9488' },
     badge: { label: 'Platinum', color: '#B8A0D4', icon: Crown },
   },
 ]
@@ -75,13 +75,13 @@ export default function Upgrade() {
 
   return (
     <motion.div
-      className="flex flex-col w-full min-h-screen bg-[#1C0B3A] px-5 pt-14 pb-28"
+      className="flex flex-col w-full min-h-screen bg-white px-5 pt-14 pb-28"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <h1 className="text-white font-bold text-xl">Choose Your Plan</h1>
+      <h1 className="text-gray-900 font-bold text-xl">Choose Your Plan</h1>
       <p className="text-brand-textSub text-xs mt-1 mb-6 leading-relaxed">
         Your billing stops the moment you go exclusive. No questions asked.
       </p>
@@ -111,7 +111,7 @@ export default function Upgrade() {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-0.5">
                   <CheckCircle size={13} style={{ color: '#78C4A0' }} />
-                  <p className="text-white font-bold text-sm">{activeTier.badge!.label} Active</p>
+                  <p className="text-gray-900 font-bold text-sm">{activeTier.badge!.label} Active</p>
                 </div>
                 <p className="text-brand-textSub text-xs">£{activeTier.price}/month · Renews automatically</p>
               </div>
@@ -153,7 +153,7 @@ export default function Upgrade() {
               transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-5 relative overflow-hidden"
               style={{
-                background: isActive ? `${tier.labelColor}08` : 'rgba(255,255,255,0.04)',
+                background: isActive ? `${tier.labelColor}08` : 'rgba(0,0,0,0.02)',
                 backdropFilter: 'blur(12px)',
                 border: isActive
                   ? `1.5px solid ${tier.labelColor}`
@@ -161,14 +161,14 @@ export default function Upgrade() {
                   ? '1px solid #D4A843'
                   : tier.id === 'platinum'
                   ? '1px solid rgba(184,160,212,0.4)'
-                  : '1px solid rgba(184,160,212,0.15)',
-                boxShadow: isActive ? `0 0 28px ${tier.labelColor}18` : tier.popular ? '0 0 24px rgba(212,168,67,0.12)' : 'none',
+                  : '1px solid rgba(0,0,0,0.08)',
+                boxShadow: isActive ? `0 0 28px ${tier.labelColor}18` : tier.popular ? '0 0 24px rgba(13,148,136,0.12)' : 'none',
               }}
             >
               {tier.popular && !isActive && (
                 <div
                   className="absolute top-0 left-0 right-0 py-2 text-center text-xs font-bold uppercase tracking-wider"
-                  style={{ background: '#D4A843', color: '#1C0B3A' }}
+                  style={{ background: '#0D9488', color: 'white' }}
                 >
                   Most Popular
                 </div>
@@ -177,7 +177,7 @@ export default function Upgrade() {
               {isActive && (
                 <div
                   className="absolute top-0 left-0 right-0 py-2 text-center text-xs font-bold uppercase tracking-wider"
-                  style={{ background: tier.labelColor, color: '#1C0B3A' }}
+                  style={{ background: tier.labelColor, color: 'white' }}
                 >
                   ✓ Active Plan
                 </div>
@@ -188,7 +188,7 @@ export default function Upgrade() {
                   {tier.label}
                 </p>
                 <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-white font-bold text-4xl">{tier.price === '0' ? 'Free' : `£${tier.price}`}</span>
+                  <span className="text-gray-900 font-bold text-4xl">{tier.price === '0' ? 'Free' : `£${tier.price}`}</span>
                   {tier.price !== '0' && <span className="text-brand-textSub text-sm">/month</span>}
                 </div>
 
@@ -196,7 +196,7 @@ export default function Upgrade() {
                   {tier.features.map((f) => (
                     <div key={f} className="flex items-start gap-2.5">
                       <Check size={14} className="shrink-0 mt-0.5" style={{ color: tier.labelColor }} />
-                      <span className="text-white text-sm leading-snug">{f}</span>
+                      <span className="text-gray-900 text-sm leading-snug">{f}</span>
                     </div>
                   ))}
                 </div>
@@ -237,7 +237,7 @@ export default function Upgrade() {
             />
             <motion.div
               className="fixed inset-x-4 z-40 rounded-3xl p-6"
-              style={{ top: '50%', transform: 'translateY(-50%)', maxWidth: 358, margin: '0 auto', background: '#1E0D3C', border: '1px solid rgba(194,84,122,0.3)' }}
+              style={{ top: '50%', transform: 'translateY(-50%)', maxWidth: 358, margin: '0 auto', background: '#FFFFFF', border: '1px solid rgba(194,84,122,0.3)' }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
@@ -245,17 +245,17 @@ export default function Upgrade() {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <AlertTriangle size={18} style={{ color: '#D4A843' }} />
-                  <p className="text-white font-bold text-base">Cancel {activeTier?.badge?.label}?</p>
+                  <AlertTriangle size={18} style={{ color: '#D97706' }} />
+                  <p className="text-gray-900 font-bold text-base">Cancel {activeTier?.badge?.label}?</p>
                 </div>
                 <button onClick={() => setShowCancel(false)}><X size={18} className="text-brand-textSub" /></button>
               </div>
-              <p className="text-brand-textSub text-sm leading-relaxed mb-2">
-                You'll keep access until <span className="text-white font-semibold">May 24, 2026</span> (end of billing cycle). After that you'll move to the free plan.
+              <p className="text-gray-500 text-sm leading-relaxed mb-2">
+                You'll keep access until <span className="text-gray-900 font-semibold">May 24, 2026</span> (end of billing cycle). After that you'll move to the free plan.
               </p>
               <div
                 className="rounded-xl px-3 py-2.5 mb-5 text-xs leading-relaxed"
-                style={{ background: 'rgba(212,168,67,0.07)', border: '1px solid rgba(212,168,67,0.2)', color: '#D4A843' }}
+                style={{ background: 'rgba(13,148,136,0.06)', border: '1px solid rgba(13,148,136,0.2)', color: '#0D9488' }}
               >
                 Note: If you go exclusive before then, billing already stops regardless.
               </div>
@@ -263,7 +263,7 @@ export default function Upgrade() {
                 <button
                   onClick={() => setShowCancel(false)}
                   className="flex-1 py-3 rounded-xl font-semibold text-sm"
-                  style={{ background: 'rgba(255,255,255,0.06)', color: '#9B8FB0', border: '1px solid rgba(184,160,212,0.2)' }}
+                  style={{ background: 'rgba(0,0,0,0.04)', color: '#6B7280', border: '1px solid rgba(0,0,0,0.08)' }}
                 >
                   Keep plan
                 </button>
